@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lesson 2 – Introduction to CSS (Full Merged Edition)</title>
+
+<style>
+/* === Google Font Example === */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+/* === Base Styling === */
+body {
+  font-family: 'Roboto Mono', monospace;
+  margin: 20px;
+  line-height: 1.5;
+}
+pre {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border-left: 4px solid #0077cc;
+  overflow-x: auto;
+}
+code {
+  color: #0077cc;
+  font-weight: bold;
+}
+.example-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+/* === Selectors Examples === */
+p { color: red; }
+.intro { color: green; }
+#main { color: blue; }
+h1, h2 { color: purple; }
+input[type="text"] { border: 2px solid red; }
+
+/* === Text Properties === */
+.text-example {
+  text-align: center;
+  text-decoration: underline;
+  text-transform: uppercase;
+  text-indent: 20px;
+  letter-spacing: 2px;
+  word-spacing: 5px;
+  line-height: 1.8;
+}
+
+/* === Font Properties === */
+.font-example {
+  font-family: 'Courier New', monospace;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 20px;
+  color: brown;
+}
+
+/* === Colors === */
+.color-named { color: teal; }
+.color-hex { color: #ff6600; }
+.color-rgb { color: rgb(100, 149, 237); }
+.color-rgba { color: rgba(255, 0, 0, 0.6); }
+
+/* === Backgrounds === */
+.bg-color {
+  background-color: lightyellow;
+  padding: 10px;
+}
+.bg-image {
+  background-image: url('https://picsum.photos/id/1015/400/150');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+  padding: 20px;
+}
+
+/* === Units === */
+.unit-px { font-size: 20px; }
+.unit-em { font-size: 2em; }
+.unit-percent { width: 50%; background-color: lightblue; }
+
+/* === Cascade / Precedence === */
+#idRule { color: red; }
+.classRule { color: green; }
+.inlineRule { color: blue; }
+
+/* === Div and Span Example === */
+div.container {
+  background-color: #eef;
+  padding: 10px;
+  border: 1px solid #99f;
+}
+span.highlight {
+  background-color: yellow;
+  color: red;
+  font-weight: bold;
+}
+
+/* === NEW: Background + Text Example === */
+p.bold_brown {
+  background-image: url("https://picsum.photos/id/237/200/200");
+  background-repeat: no-repeat;
+  background-position: left;
+  color: brown;
+  font-weight: bold;
+  padding-left: 210px;
+  height: 200px;
+}
+
+/* === NEW: Table Styling === */
+table, th, td {
+  border: 1px solid blue;
+  border-collapse: collapse;
+  text-align: center;
+}
+th {
+  background-color: pink;
+  font-weight: bold;
+  color: darkblue;
+}
+td {
+  background-color: #f5faff;
+}
+
+/* === NEW: List Styling === */
+ol {
+  color: blueviolet;
+  background-color: aqua;
+}
+li {
+  color: green;
+  background-color: greenyellow;
+}
+
+/* === NEW: Multiple Classes === */
+p.center { text-align: center; color: purple; }
+p.large { font-size: 200%; }
+</style>
+</head>
+
+<body>
+<header>
+  <h1>Lesson 2 – Introduction to CSS (Full Edition)</h1>
+  <p>This file merges all Lesson 2 content: selectors, text, fonts, colors, backgrounds, units, cascade, div/span, and extended practical examples.</p>
+  <hr>
+</header>
+
+<!-- ==================================== -->
+<!-- What CSS Can Change -->
+<!-- ==================================== -->
+<h2>What Can CSS Change?</h2>
+<ul>
+  <li>Text color, size, font, and alignment</li>
+  <li>Backgrounds and images</li>
+  <li>Borders, margins, and spacing</li>
+  <li>Tables, links, and lists</li>
+  <li>Layout (display, position, float, etc.)</li>
+</ul>
+<hr>
+
+<!-- ==================================== -->
+<!-- 1. CSS Selectors -->
+<!-- ==================================== -->
+<h2>1. CSS Selectors</h2>
+<h3>Tag Selector</h3>
+<pre><code>p { color: red; }</code></pre>
+<div class="example-box">
+  <p>This paragraph is styled using the tag selector <b>p</b>.</p>
+</div>
+
+<h3>Class Selector</h3>
+<pre><code>.intro { color: green; }</code></pre>
+<div class="example-box">
+  <p class="intro">This paragraph uses the class selector <b>.intro</b>.</p>
+</div>
+<br><br>
+<h3>ID Selector</h3>
+<pre><code>#main { color: blue; }</code></pre>
+<div class="example-box">
+  <p id="main">This paragraph is styled by the ID selector <b>#main</b>.</p>
+</div>
+
+<h3>Group Selector</h3>
+<pre><code>h1, h2 { color: purple; }</code></pre>
+<div class="example-box">
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+</div>
+
+<h3>Attribute Selector</h3>
+<pre><code>input[type="text"] { border: 2px solid red; }</code></pre>
+<div class="example-box">
+  <input type="text" placeholder="Type something...">
+</div>
+
+<hr>
+
+<!-- ==================================== -->
+<!-- 2. Text Properties -->
+<!-- ==================================== -->
+<h2>2. Text Properties</h2>
+<pre><code>
+.text-example {
+  text-align: center;
+  text-decoration: underline;
+  text-transform: uppercase;
+  text-indent: 20px;
+  letter-spacing: 2px;
+  word-spacing: 5px;
+  line-height: 1.8;
+}
+</code></pre>
+<div class="example-box text-example">
+  CSS controls alignment, decoration, capitalization, spacing, and line height.
+</div>
+
+<hr>
+
+<!-- ==================================== -->
+<!-- 3. Font Properties -->
+<!-- ==================================== -->
+<h2>3. Font Properties</h2>
+<pre><code>
+.font-example {
+  font-family: 'Courier New', monospace;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 20px;
+  color: brown;
+}
+</code></pre>
+<div class="example-box font-example">
+  This text demonstrates font-family, style, weight, size, and color.
+</div>
+
+<hr>
+
+<!-- ==================================== -->
+<!-- 4. Colors -->
+<!-- ==================================== -->
+<h2>4. Colors</h2>
+<pre><code>
+.color-named { color: teal; }
+.color-hex { color: #ff6600; }
+.color-rgb { color: rgb(100,149,237); }
+.color-rgba { color: rgba(255,0,0,0.6); }
+</code></pre>
+<div class="example-box">
+  <p class="color-named">Named color (teal)</p>
+  <p class="color-hex">HEX color (#ff6600)</p>
+  <p class="color-rgb">RGB color (100,149,237)</p>
+  <p class="color-rgba">RGBA color with transparency (red, 0.6 opacity)</p>
+</div>
+<p>For a full list of color names and values, visit 
+<a href="https://www.w3schools.com/cssref/css_colors_legal.asp" target="_blank">W3Schools Color Reference</a>.
+</p>
+
+<hr>
+
+<!-- ==================================== -->
+<!-- 5. Backgrounds -->
+<!-- ==================================== -->
+<h2>5. Backgrounds</h2>
+<pre><code>
+.bg-color { background-color: lightyellow; }
+.bg-image {
+  background-image: url('https://picsum.photos/id/1015/400/150');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+</code></pre>
+<div class="example-box bg-color">This has a light yellow background.</div>
+<div class="example-box bg-image">This uses an image background that covers the box.</div>
+
+<hr>
+
+<!-- ==================================== -->
+<!-- 6. Units -->
+<!-- ==================================== -->
+<h2>6. Units of Measurement</h2>
+<pre><code>
+.unit-px { font-size: 20px; }
+.unit-em { font-size: 2em; }
+.unit-percent { width: 50%; background-color: lightblue; }
+</code></pre>
+<div class="example-box unit-px">Font size = 20px (absolute)</div>
+<div class="example-box unit-em">Font size = 2em (relative to parent)</div>
+<div class="example-box unit-percent">Width = 50% (relative to parent container)</div>
+
+<hr>
+
+<!-- ==================================== -->
+<!-- 7. Cascade / Precedence -->
+<!-- ==================================== -->
+<br><br>
+<h2>7. Cascade and Precedence</h2>
+<pre><code>
+#idRule { color: red; }
+.classRule { color: green; }
+.inlineRule { color: blue; }
+</code></pre>
+<div class="example-box">
+  <p id="idRule" class="classRule" style="color: blue;">This text is blue because inline style wins over class and ID.</p>
+</div>
+
+<hr>
+
+<!-- ==================================== -->
+<!-- 8. Div and Span -->
+<!-- ==================================== -->
+<h2>8. Div and Span</h2>
+<pre><code>
+div.container {
+  background-color: #eef;
+  padding: 10px;
+  border: 1px solid #99f;
+}
+span.highlight {
+  background-color: yellow;
+  color: red;
+  font-weight: bold;
+}
+</code></pre>
+<div class="example-box container">
+  <p>This is a paragraph inside a <b>div.container</b> element.</p>
+  <p>Here is a <span class="highlight">highlighted span</span> inside text.</p>
+</div>
+
+<hr>
+
+<!-- ==================================== -->
+<!-- EXTENDED SECTIONS -->
+<!-- ==================================== -->
+<br><br><br><br><br><br><br><br>
+<h2>9. Inline CSS Example</h2>
+<pre><code>&lt;h1 style="color: blue; text-align:center;"&gt;Blue Title&lt;/h1&gt;</code></pre>
+<div class="example-box">
+  <h1 style="color: blue; text-align:center;">Blue Title</h1>
+  <p style="font-size:20px; color:red;">Red paragraph using inline style.</p>
+</div>
+
+<hr>
+
+<h2>10. Combined Background Image + Text</h2>
+<pre><code>p.bold_brown { background-image: url(...); color:brown; font-weight:bold; }</code></pre>
+<div class="example-box">
+  <p class="bold_brown">This text appears beside an image with brown bold font.</p>
+</div>
+
+<hr>
+
+<h2>11. Table Styling</h2>
+<pre><code>table, th, td { border:1px solid blue; border-collapse:collapse; }</code></pre>
+<div class="example-box">
+  <table>
+    <thead><tr><th>Month</th><th>Sales</th></tr></thead>
+    <tbody>
+      <tr><td>January</td><td>$1000</td></tr>
+      <tr><td>February</td><td>$800</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+
+<h2>12. List Color Inheritance</h2>
+<pre><code>ol { color:blueviolet; } li { color:green; }</code></pre>
+<div class="example-box">
+  <ol>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ol>
+</div>
+
+<hr>
+
+<h2>13. Multiple Classes</h2>
+<pre><code>&lt;p class="center large"&gt;Text using two classes&lt;/p&gt;</code></pre>
+<div class="example-box">
+  <p class="center large">This paragraph uses both <b>center</b> and <b>large</b> classes.</p>
+</div>
+
+<hr>
+
+<footer>
+  <p>End of Lesson 2 – Full CSS Example Integration.</p>
+</footer>
+
+</body>
+</html>

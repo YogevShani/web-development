@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Cheat Sheet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #eee;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lesson 2, CSS Cheat Sheet</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Property / Selector</th>
+        <th>Usage</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <!-- Selectors -->
+
+      <tr>
+        <td>Selectors</td>
+        <td>p</td>
+        <td>Selects all &lt;p&gt; tags</td>
+        <td>p { color: blue; }</td>
+      </tr>
+
+      <tr>
+        <td>Selectors</td>
+        <td>.intro</td>
+        <td>Selects elements with class="intro"</td>
+        <td>.intro { font-size: 20px; }</td>
+      </tr>
+
+      <tr>
+        <td>Selectors</td>
+        <td>#main</td>
+        <td>Selects element with id="main"</td>
+        <td>#main { text-align: center; }</td>
+      </tr>
+
+      <tr>
+        <td>Selectors</td>
+        <td>h1, p</td>
+        <td>Groups multiple selectors</td>
+        <td>h1, p { color: green; }</td>
+      </tr>
+
+      <tr>
+        <td>Selectors</td>
+        <td>input[type="text"]</td>
+        <td>Attribute selector</td>
+        <td>input[type="text"] { border: 1px solid black; }</td>
+      </tr>
+
+      <!-- Text -->
+
+      <tr>
+        <td>Text</td>
+        <td>text-align</td>
+        <td>Aligns text</td>
+        <td>p { text-align: center; }</td>
+      </tr>
+
+      <tr>
+        <td>Text</td>
+        <td>text-decoration</td>
+        <td>Underline, remove underline, etc</td>
+        <td>a { text-decoration: none; }</td>
+      </tr>
+
+      <tr>
+        <td>Text</td>
+        <td>text-transform</td>
+        <td>Uppercase, lowercase, capitalize</td>
+        <td>h1 { text-transform: uppercase; }</td>
+      </tr>
+
+      <tr>
+        <td>Text</td>
+        <td>text-indent</td>
+        <td>Indent first line</td>
+        <td>p { text-indent: 20px; }</td>
+      </tr>
+
+      <tr>
+        <td>Text</td>
+        <td>letter-spacing</td>
+        <td>Space between letters</td>
+        <td>p { letter-spacing: 2px; }</td>
+      </tr>
+
+      <tr>
+        <td>Text</td>
+        <td>word-spacing</td>
+        <td>Space between words</td>
+        <td>p { word-spacing: 5px; }</td>
+      </tr>
+
+      <tr>
+        <td>Text</td>
+        <td>line-height</td>
+        <td>Space between lines</td>
+        <td>p { line-height: 1.5; }</td>
+      </tr>
+
+      <!-- Fonts -->
+
+      <tr>
+        <td>Fonts</td>
+        <td>font-family</td>
+        <td>Font type</td>
+        <td>p { font-family: Arial, "Times New Roman", serif; }</td>
+      </tr>
+
+      <tr>
+        <td>Fonts</td>
+        <td>font-style</td>
+        <td>Normal, italic, oblique</td>
+        <td>p { font-style: italic; }</td>
+      </tr>
+
+      <tr>
+        <td>Fonts</td>
+        <td>font-weight</td>
+        <td>Thickness of text</td>
+        <td>p { font-weight: bold; }</td>
+      </tr>
+
+      <tr>
+        <td>Fonts</td>
+        <td>font-size</td>
+        <td>Text size</td>
+        <td>p { font-size: 16px; }</td>
+      </tr>
+
+      <tr>
+        <td>Fonts</td>
+        <td>color</td>
+        <td>Text color</td>
+        <td>p { color: red; }</td>
+      </tr>
+
+      <!-- Colors -->
+
+      <tr>
+        <td>Colors</td>
+        <td>Named colors</td>
+        <td>Use names like red, blue</td>
+        <td>h1 { color: green; }</td>
+      </tr>
+
+      <tr>
+        <td>Colors</td>
+        <td>Hex colors</td>
+        <td>Use hex codes</td>
+        <td>h1 { color: #FF0000; }</td>
+      </tr>
+
+      <tr>
+        <td>Colors</td>
+        <td>RGB / RGBA</td>
+        <td>Use rgb values</td>
+        <td>h1 { color: rgb(255,0,0); }</td>
+      </tr>
+
+      <!-- Backgrounds -->
+
+      <tr>
+        <td>Backgrounds</td>
+        <td>background-color</td>
+        <td>Set background color</td>
+        <td>body { background-color: yellow; }</td>
+      </tr>
+
+      <tr>
+        <td>Backgrounds</td>
+        <td>background-image</td>
+        <td>Add background image</td>
+        <td>div { background-image: url("pic.jpg"); }</td>
+      </tr>
+
+      <tr>
+        <td>Backgrounds</td>
+        <td>background-repeat</td>
+        <td>Repeat pattern or not</td>
+        <td>div { background-repeat: no-repeat; }</td>
+      </tr>
+
+      <tr>
+        <td>Backgrounds</td>
+        <td>background-position</td>
+        <td>Position image</td>
+        <td>div { background-position: center; }</td>
+      </tr>
+
+      <tr>
+        <td>Backgrounds</td>
+        <td>background-size</td>
+        <td>Size of image</td>
+        <td>div { background-size: contain; }</td>
+      </tr>
+
+      <!-- Units -->
+
+      <tr>
+        <td>Units</td>
+        <td>px</td>
+        <td>Absolute pixels</td>
+        <td>p { font-size: 20px; }</td>
+      </tr>
+
+      <tr>
+        <td>Units</td>
+        <td>em</td>
+        <td>Relative to parent font size</td>
+        <td>p { font-size: 2em; }</td>
+      </tr>
+
+      <tr>
+        <td>Units</td>
+        <td>%</td>
+        <td>Relative to parent element</td>
+        <td>p { width: 80%; }</td>
+      </tr>
+
+      <!-- Cascade -->
+
+      <tr>
+        <td>Cascade / Precedence</td>
+        <td>Inline > id > class > tag</td>
+        <td>Defines which CSS rule wins</td>
+        <td>Inline style overrides all</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</body>
+</html>

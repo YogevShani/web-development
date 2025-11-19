@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson 1 – Basic HTML Tags (Complete)</title>
+</head>
+<body>
+
+  <!-- ============================= -->
+  <!-- Course Header -->
+  <!-- ============================= -->
+  <header>
+    <h1>Lesson 1 – Basic HTML Tags Cheat Sheet</h1>
+  </header>
+
+  <p>This page demonstrates all the HTML elements you learned in Lesson 1.
+  Each section shows the tag, explains what it does, and displays a working example.</p>
+  <hr>
+
+  <!-- ============================= -->
+  <!-- Lists -->
+  <!-- ============================= -->
+  <h2>Lists</h2>
+
+  <h3>&lt;ul&gt; – Unordered List</h3>
+  <ul>
+    <li>Apple</li>
+    <li>Banana</li>
+  </ul>
+
+  <h3>&lt;ol&gt; – Ordered List</h3>
+  <ol>
+    <li>First</li>
+    <li>Second</li>
+  </ol>
+
+  <h3>Ordered List Attributes</h3>
+  <p>The &lt;ol&gt; element supports <b>type</b>, <b>start</b>, and <b>reversed</b> attributes:</p>
+
+  <p><b>Example 1:</b> type="A"</p>
+  <ol type="A">
+    <li>Alpha</li>
+    <li>Beta</li>
+  </ol>
+
+  <p><b>Example 2:</b> start="3"</p>
+  <ol start="3">
+    <li>Third</li>
+    <li>Fourth</li>
+  </ol>
+
+  <p><b>Example 3:</b> reversed</p>
+  <ol reversed>
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ol>
+
+  <hr>
+
+  <!-- ============================= -->
+  <!-- Text Formatting Example -->
+  <!-- ============================= -->
+  <h2>Nested Tags – &lt;b&gt; inside &lt;p&gt;</h2>
+  <p>This example shows how one tag can be nested inside another:</p>
+  <p>Robert <b>De Niro</b> is an <b>American actor</b> known for his roles in films such as 
+  <b>Taxi Driver</b> and <b>Goodfellas</b>.</p>
+
+  <hr>
+
+  <!-- ============================= -->
+  <!-- Images -->
+  <!-- ============================= -->
+  <br><br><br><br><h2>Images</h2>
+  <p>&lt;img&gt; displays an image. It uses <b>src</b> for the file location and <b>alt</b> for alternate text.</p>
+  <img src="https://picsum.photos/id/237/200/200" alt="Dog" width="200">
+
+  <h3>Image Formats</h3>
+  <ul>
+    <li><b>JPG / JPEG</b> – Best for photos, supports millions of colors, small file size.</li>
+    <li><b>GIF</b> – Supports animation and transparency but only 256 colors.</li>
+    <li><b>PNG</b> – Supports high-quality images and full transparency, larger file size.</li>
+  </ul>
+
+  <!-- Transparency Comparison Example -->
+  <h3>Transparency Demo (JPG vs PNG)</h3>
+  <p>Below you can see the difference between a JPG and a PNG image. 
+  The PNG supports transparency (you can see the background through it):</p>
+  <div style="background-color: lightgray; padding: 10px;">
+    <img src="https://picsum.photos/id/237/150/150" alt="JPG Example" width="200">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png" alt="PNG Example" width="200">
+  </div>
+
+  <hr>
+
+<!-- ============================= -->
+  <!-- Tips Section (Internal Link Target) -->
+  <!-- ============================= -->
+  <h2 id="tips">Tips Section (Internal Link Target)</h2>
+  <p>This section was reached using an internal anchor link (&lt;a href="#tips"&gt;).</p>
+  <p><a href="#top">Back to Top</a></p>
+
+<br><br><br><br>
+  <!-- ============================= -->
+  <!-- Image as Link -->
+  <!-- ============================= -->
+  <h2>Image as a Hyperlink</h2>
+  <p>To make an image clickable, wrap it with an &lt;a&gt; tag:</p>
+  <a href="https://google.com"><img src="https://picsum.photos/id/237/150/150" alt="Dog Link"></a>
+
+  <hr>
+
+  <!-- ============================= -->
+  <!-- Line Break -->
+  <!-- ============================= -->
+  <h2>&lt;br&gt; – Line Break</h2>
+  <p>Hello<br>World</p>
+
+  <hr>
+
+  <!-- ============================= -->
+  <!-- Tables -->
+  <!-- ============================= -->
+  <h2>Tables</h2>
+  <table border="1">
+    <thead>
+      <tr><th>Name</th><th>Age</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Alice</td><td>25</td></tr>
+      <tr><td>Bob</td><td>30</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="2">End of Table</td></tr>
+    </tfoot>
+  </table>
+
+  <hr>
+
+  <!-- ============================= -->
+  <!-- Links -->
+  <!-- ============================= -->
+  <h2>Links (&lt;a&gt;)</h2>
+  <a href="https://google.com">Visit Google</a>
+
+  <h3>Target Attribute</h3>
+  <a href="https://wikipedia.org" target="_blank">Wikipedia (new tab)</a><br>
+  <a href="https://wikipedia.org" target="_self">Wikipedia (same tab)</a>
+
+  <h3>Protocols in Links</h3>
+  <ul>
+    <li><b>https://</b> – regular web address</li>
+    <li><b>ftp://</b> – file transfer address</li>
+    <li><b>mailto:</b> – opens an email client</li>
+  </ul>
+
+  <a href="https://example.com">Open Website</a><br>
+  <a href="ftp://example.com/files/">Open FTP Folder</a><br>
+  <a href="mailto:yogevshani1@gmail.com">Send Email</a>
+
+  <hr><br>
+	
+  <!-- ============================= -->
+  <!-- Relative and Absolute Paths -->
+  <!-- ============================= -->
+  <h2>Relative and Absolute Paths</h2>
+  <pre>
+project/
+ ├── index.html
+ ├── pages/
+ │     └── about.html
+ └── images/
+       └── logo.png
+  </pre>
+  <p><b>Absolute path:</b> &lt;a href="https://mysite.com/pages/about.html"&gt;About&lt;/a&gt;</p>
+  <p><b>Relative path:</b> &lt;a href="pages/about.html"&gt;About&lt;/a&gt;</p>
+
+  <a href="pages/about.html">About (relative)</a>
+
+  <hr>
+
+  <!-- ============================= -->
+  <!-- Iframe -->
+  <!-- ============================= -->
+  <h2><br>&lt;iframe&gt; – Embedded Web Page</h2>
+  <iframe src="https://www.wikipedia.org" width="400" height="200" title="Wikipedia Embed"></iframe>
+
+  <hr>
+
+  <!-- ============================= -->
+  <!-- Entities -->
+  <!-- ============================= -->
+  <h2>HTML Entities (Special Characters)</h2>
+  <table border="1">
+    <tr><th>Entity</th><th>Result</th><th>Description</th></tr>
+    <tr><td>&amp;nbsp;</td><td>&nbsp;</td><td>Non-breaking space</td></tr>
+    <tr><td>&amp;lt;</td><td>&lt;</td><td>Less than sign</td></tr>
+    <tr><td>&amp;gt;</td><td>&gt;</td><td>Greater than sign</td></tr>
+    <tr><td>&amp;amp;</td><td>&amp;</td><td>Ampersand</td></tr>
+    <tr><td>&amp;quot;</td><td>&quot;</td><td>Double quote</td></tr>
+    <tr><td>&amp;apos;</td><td>&apos;</td><td>Single quote</td></tr>
+    <tr><td>&amp;copy;</td><td>&copy;</td><td>Copyright symbol</td></tr>
+    <tr><td>&amp;reg;</td><td>&reg;</td><td>Registered trademark</td></tr>
+  </table>
+
+  <hr>
+
+  <footer>
+    <hr>
+    <p>End of Lesson 1 – All core HTML tags covered.</p>
+  </footer>
+
+</body>
+</html>

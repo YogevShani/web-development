@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Position Demonstration + Overlay Examples</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  line-height: 1.5;
+}
+
+/* Base box style */
+.box {
+  width: 222px;
+  height: 100px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  line-height: 80px;
+  font-weight: bold;
+  border: 2px solid black;
+  margin-bottom: 20px;
+}
+
+/*1️⃣ Static */
+.static {
+  background-color: #6aa84f; /* green */
+  position: static;
+}
+
+/* 2️⃣ Relative */
+.relative {
+  background-color: #3d85c6; /* blue */
+  position: relative;
+  top: 20px;
+  left: 40px;
+}
+
+/* 3️⃣ Absolute */
+.absolute-container {
+  position: relative; /* parent for absolute */
+  background-color: #ddd;
+  height: 150px;
+  margin-top: 40px;
+  padding: 10px;
+  border: 2px dashed gray;
+}
+
+.absolute {
+  background-color: #e69138; /* orange */
+  position: absolute;
+  top: 30px;
+  right: 20px;
+}
+
+/* 4️⃣ Fixed */
+.fixed {
+  background-color: #cc0000; /* red */
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 200px;
+  height: 60px;
+  line-height: 60px;
+  z-index: 10;
+}
+
+/* 5️⃣ Sticky */
+.sticky {
+  background-color: #674ea7; /* purple */
+  position: sticky;
+  top: 0;
+}
+
+section {
+  margin-bottom: 80px;
+}
+
+code {
+  display: block;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-top: 10px;
+  white-space: pre;
+  font-family: Consolas, monospace;
+}
+
+/* ======= New Overlay / Background Demo (Merged) ======= */
+
+.container {
+  display: flex;
+  gap: 40px;
+  justify-content: space-around;
+}
+
+/* Shared style for each demo box */
+.example {
+  width: 400px;
+  height: 250px;
+  border: 2px solid #444;
+  position: relative;
+}
+
+/* Absolute overlay demo */
+.absolute-container-overlay {
+  position: relative;
+}
+
+.absolute-container-overlay img {
+  width: 100%;
+  height: 100%;
+}
+
+.absolute-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Background-image demo */
+.background-box {
+  background-image: url("https://picsum.photos/id/237/400/250");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>CSS Position Demonstration</h1>
+<p>This example shows static, relative, absolute, fixed, sticky and how overlays work with absolute positioning.</p>
+<hr>
+
+
+<!-- =========================== -->
+<!-- 1️⃣ STATIC -->
+<!-- =========================== -->
+<section>
+  <h2>1️⃣ position: static (default)</h2>
+
+  <div class="box static">Static</div>
+
+  <p>Static is the default.  
+     The element remains in normal document flow and ignores top/left/right.</p>
+
+  <h3>CSS used:</h3>
+  <code>
+.static {
+  background-color: #6aa84f;
+  position: static;
+}
+  </code>
+</section>
+
+
+<!-- =========================== -->
+<!-- 2️⃣ RELATIVE -->
+<!-- =========================== -->
+<section>
+  <h2>2️⃣ position: relative</h2>
+
+  <div class="box relative">Relative</div>
+
+  <p>Relative keeps the element in the normal flow, but shifts it via top/left.</p>
+
+  <h3>CSS used:</h3>
+  <code>
+.relative {
+  background-color: #3d85c6;
+  position: relative;
+  top: 20px;
+  left: 40px;
+}
+  </code>
+</section>
+
+
+<!-- =========================== -->
+<!-- 3️⃣ ABSOLUTE -->
+<!-- =========================== -->
+<section>
+  <h2>3️⃣ position: absolute</h2>
+
+  <div class="absolute-container">
+    Container (relative)
+    <div class="box absolute">Absolute</div>
+  </div>
+
+  <p>Absolute removes the element from flow and positions it relative to  
+     the first ancestor with position not static.</p>
+
+  <h3>CSS used:</h3>
+  <code>
+.absolute-container {
+  position: relative;
+  background-color: #ddd;
+  height: 150px;
+  border: 2px dashed gray;
+}
+
+.absolute {
+  background-color: #e69138;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+}
+  </code>
+</section>
+
+
+<!-- ======================================= -->
+<!-- ⭐ NEW MERGED SECTION: OVERLAY EXAMPLES -->
+<!-- ======================================= -->
+<section>
+  <h2>Overlay Examples (Absolute Overlay + Background Image)</h2>
+
+  <p>These examples demonstrate how to place text on top of an image using either  
+     absolute positioning or a background image.</p>
+
+  <div class="container">
+
+    <!-- Absolute overlay -->
+    <div class="example absolute-container-overlay">
+      <img src="https://picsum.photos/id/237/400/250" alt="Dog image background">
+      <div class="absolute-overlay">Robert De Niro</div>
+    </div>
+
+    <div style="width: 400px;">
+      <h3>Example A – Image + position:absolute overlay</h3>
+      <ul>
+        <li>Image is real content (&lt;img&gt; element).</li>
+        <li>Overlay is placed above it using absolute positioning.</li>
+        <li>Good for content images.</li>
+        <li>Requires a parent with position: relative.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <hr style="margin: 40px 0;">
+
+  <div class="container">
+
+    <!-- Background-image -->
+    <div class="example background-box">
+      Robert De Niro
+    </div>
+
+    <div style="width: 400px;">
+      <h3>Example B – background-image overlay</h3>
+      <ul>
+        <li>Image is decorative, provided through CSS.</li>
+        <li>No &lt;img&gt; tag needed.</li>
+        <li>Good for non-semantic decorative backgrounds.</li>
+      </ul>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================== -->
+<!-- 4️⃣ FIXED -->
+<!-- =========================== -->
+<section style="height: 600px;">
+  <h2>4️⃣ position: fixed</h2>
+
+  <div class="box fixed">Fixed Box</div>
+
+  <p>Fixed elements stay attached to the viewport.</p>
+
+  <h3>CSS used:</h3>
+  <code>
+.fixed {
+  background-color: #cc0000;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 200px;
+  height: 60px;
+  z-index: 10;
+}
+  </code>
+</section>
+
+
+<!-- =========================== -->
+<!-- 5️⃣ STICKY -->
+<!-- =========================== -->
+<section style="height: 1200px; border: 5px solid red;">
+  <h2 class="box sticky">5️⃣ position: sticky</h2>
+
+  <p>Sticky behaves like relative until reaching its threshold then sticks.</p>
+
+  <h3>CSS used:</h3>
+  <code>
+.sticky {
+  background-color: #674ea7;
+  position: sticky;
+  top: 0;
+}
+  </code>
+</section>
+
+</body>
+</html>

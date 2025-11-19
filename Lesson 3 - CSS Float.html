@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Float Demonstrations Combined</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  line-height: 1.6;
+}
+section {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 40px;
+}
+h2 {
+  background-color: #eee;
+  padding: 5px;
+}
+p {
+  margin-top: 0;
+}
+code {
+  background: #f5f5f5;
+  display: block;
+  padding: 1px;
+  margin: 2px 0;
+  border: 1px solid #ddd;
+  font-family: Consolas, monospace;
+  white-space: pre;
+}
+
+/* ORIGINAL 3 CASES */
+.imgLeft {
+  float: left;
+  margin-right: 15px;
+  width: 150px;
+  height: 150px;
+  border: 2px solid black;
+}
+.textNormal {
+  background-color: rgba(0, 128, 0, 0.15);
+  padding: 10px;
+}
+
+.imgLeft2 {
+  float: left;
+  margin-right: 15px;
+  width: 150px;
+  height: 150px;
+  border: 2px solid black;
+}
+.textRight {
+  float: right;
+  width: 60%;
+  background-color: rgba(255, 0, 0, 0.15);
+  padding: 10px;
+}
+
+.sidebar {
+  float: left;
+  width: 30%;
+  background-color: rgba(0, 0, 255, 0.15);
+  padding: 10px;
+  box-sizing: border-box;
+}
+.main {
+  float: right;
+  width: 68%;
+  background-color: rgba(0, 255, 0, 0.15);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.clearFix {
+  clear: both;
+}
+
+/* NEW EXAMPLES */
+
+/* No Float */
+.noFloatImage {
+  display: block;
+  width: 150px;
+  height: 150px;
+  border: 3px solid black;
+  margin-bottom: 10px;
+}
+.noFloatText {
+  background-color: rgba(255, 0, 0, 0.15);
+  padding: 5px;
+}
+
+/* Inline Block */
+.inlineBlockImageBox {
+  display: inline-block;
+  vertical-align: top;
+}
+.inlineBlockImage {
+  width: 150px;
+  height: 150px;
+  border: 3px solid black;
+  margin-right: 10px;
+}
+.inlineBlockTextBox {
+  display: inline-block;
+  width: 70%;
+  vertical-align: top;
+}
+.inlineBlockText {
+  background-color: rgba(0, 0, 255, 0.15);
+  padding: 5px;
+}
+
+/* Float wrapping example */
+.floatImage2 {
+  float: left;
+  width: 150px;
+  height: 150px;
+  border: 3px solid black;
+  margin-right: 15px;
+}
+.floatText2 {
+  background-color: rgba(0, 128, 0, 0.15);
+  padding: 5px;
+}
+
+/* Clear example */
+.floatImageClear {
+  float: left;
+  width: 150px;
+  height: 150px;
+  border: 3px solid black;
+  margin-right: 15px;
+}
+.textBoxClear {
+  background-color: #c2f0c2;
+  padding: 10px;
+}
+.footerBox {
+  background-color: #f7bebe;
+  padding: 10px;
+  margin-top: 10px;
+}
+.clear {
+  clear: both;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Float Demonstrations Combined</h1>
+
+
+<!-- ========================================================== -->
+<!-- Example 1: Only Image Floated -->
+<!-- ========================================================== -->
+<section>
+  <h2>Example 1 – Only Image Floated</h2>
+
+  <img class="imgLeft" src="https://picsum.photos/id/237/150/150" alt="Dog">
+  <p class="textNormal">
+    The image floats left while the text wraps around it naturally. 
+  </p>
+  <div class="clearFix"></div>
+
+  <h3>CSS used:</h3>
+  <code>
+.imgLeft { float: left; margin-right: 15px; }
+  </code>
+</section>
+
+
+<!-- ========================================================== -->
+<!-- Example 2: Both Floated (incorrect text behavior) -->
+<!-- ========================================================== -->
+<section>
+  <h2>Example 2 – Both Floated (Image and Text)</h2>
+
+  <img class="imgLeft2" src="https://picsum.photos/id/237/150/150" alt="Dog">
+  <p class="textRight">
+    When both the image and the text float, text no longer wraps correctly.
+  </p>
+  <div class="clearFix"></div>
+
+  <h3>CSS used:</h3>
+  <code>
+img { float: left; }
+p { float: right; width: 60%; }
+  </code>
+</section>
+
+
+<!-- ========================================================== -->
+<!-- Example 3: Sidebar + Main Layout -->
+<!-- ========================================================== -->
+<section>
+  <h2>Example 3 – Layout Using Floats (Sidebar + Main)</h2>
+
+  <div class="sidebar">
+    <h3>Sidebar</h3>
+    <p>This area floats left at 30 percent width.</p>
+  </div>
+
+  <div class="main">
+    <h3>Main Content</h3>
+    <p>This area floats right at 68 percent width to form a two column layout.</p>
+  </div>
+
+  <div class="clearFix"></div>
+
+  <h3>CSS used:</h3>
+  <code>
+.sidebar { float: left; width: 30%; }
+.main    { float: right; width: 68%; }
+  </code>
+</section>
+
+
+<!-- ========================================================== -->
+<!-- Example 4: No Float -->
+<!-- ========================================================== -->
+<section>
+  <h2>Example 4 – No Float (Stacking Layout)</h2>
+
+  <img class="noFloatImage" src="https://picsum.photos/id/237/150/150" alt="Dog">
+  <p class="noFloatText">
+    Without float, elements appear one under the other.
+  </p>
+
+  <h3>CSS used:</h3>
+  <code>
+.noFloatImage { display: block; margin-bottom: 10px; }
+.noFloatText  { background: rgba(255,0,0,0.15); }
+  </code>
+</section>
+
+
+<!-- ========================================================== -->
+<!-- Example 5: Inline Block -->
+<!-- ========================================================== -->
+<section>
+  <h2>Example 5 – Inline Block (Side by Side, No Wrap)</h2>
+
+  <div class="inlineBlockImageBox">
+    <img class="inlineBlockImage" src="https://picsum.photos/id/237/150/150" alt="Dog">
+  </div>
+
+  <div class="inlineBlockTextBox">
+    <p class="inlineBlockText">
+      Inline block puts elements side by side,  
+      but the text does not wrap around the image. Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla  Bla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla BlaBla Bla Bla Bla Bla Bla
+    </p>
+  </div>
+
+  <h3>CSS used:</h3>
+  <code>
+.inlineBlockImageBox { display: inline-block; }
+.inlineBlockTextBox  { display: inline-block; width: 70%; }
+  </code>
+</section>
+
+
+<!-- ========================================================== -->
+<!-- Example 6: Float Wrapping -->
+<!-- ========================================================== -->
+<section>
+  <h2>Example 6 – Float Wrapping (Text Flowing Around Image)</h2>
+
+  <img class="floatImage2" src="https://picsum.photos/id/237/150/150" alt="Dog">
+  <p class="floatText2">
+    This text wraps around the floated image.  
+    When the text goes below the bottom edge of the image,  
+    it returns to full width again. Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla.
+  </p>
+  <div class="clearFix"></div>
+
+  <h3>CSS used:</h3>
+  <code>
+.floatImage2 { float: left; margin-right: 15px; }
+.floatText2  { background: rgba(0,128,0,0.15); }
+  </code>
+</section>
+
+
+<!-- ========================================================== -->
+<!-- Example 7: Clear to Fix Overlap -->
+<!-- ========================================================== -->
+<section>
+  <h2>Example 7 – Using Clear to Fix Footer Overlap</h2>
+
+  <h3>Without Clear (Footer Jumps Up)</h3>
+
+  <img class="floatImageClear" src="https://picsum.photos/id/237/150/150" alt="Dog">
+
+  <div class="textBoxClear">
+    The green section wraps around the image.  
+    But the footer does not recognize the float and slides upward.
+  </div>
+
+  <div class="footerBox">
+    🚫 Footer without clear. It overlaps beside the image.
+  </div>
+
+  <div class="clearFix"></div>
+  <hr>
+
+  <h3>With Clear (Footer Below the Image)</h3>
+
+  <img class="floatImageClear" src="https://picsum.photos/id/237/150/150" alt="Dog">
+
+  <div class="textBoxClear">
+    With clear: both applied,  
+    the footer will start below the floated image.
+  </div>
+
+  <div class="footerBox clear">
+    ✅ Footer with clear: both (Correct placement)
+  </div>
+
+  <h3>CSS used:</h3>
+  <code>
+.floatImageClear { float: left; margin-right: 15px; }
+.footerBox { background: #f7bebe; }
+.clear { clear: both; }
+  </code>
+</section>
+
+
+</body>
+</html>

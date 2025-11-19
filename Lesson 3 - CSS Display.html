@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Block vs Inline & Display Types</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.5;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: darkblue;
+    }
+
+    hr { margin: 30px 0; }
+
+    .section {
+      border: 2px solid #ccc;
+      background-color: #f9f9f9;
+      margin: 10px 0;
+      padding: 15px;
+    }
+
+    .box {
+      border: 2px solid black;
+      margin: 5px;
+      padding: 10px;
+      color: white;
+      text-align: center;
+    }
+
+    /* ===== Block Tags ===== */
+    .block-div { background-color: lightgreen; }
+    .block-p { background-color: lightcoral; }
+    .block-ul { background-color: lightblue; padding: 10px; }
+    .block-li { background-color: teal; color: white; margin: 5px 0; padding: 3px; }
+
+    /* ===== Inline Tags ===== */
+    .inline-span { background-color: orange; }
+    .inline-a { background-color: violet; color: white; text-decoration: none; padding: 3px 6px; }
+    .inline-b { background-color: salmon; }
+    .inline-i { background-color: green; }
+    .inline-u { background-color: purple; color: white; }
+    .inline-img { width: 60px; height: 40px; vertical-align: middle; }
+
+    /* ===== Display Experiments ===== */
+    .div-block { display: block; background-color: lightgreen; }
+    .div-inline { display: inline; background-color: rgb(243, 105, 105); }
+    .div-inline-block { display: inline-block; background-color: gold; width: 120px; height: 80px; }
+
+    .a-inline { display: inline; background-color: violet; color: white; padding: 4px; text-decoration: none; }
+    .a-block { display: block; background-color: steelblue; color: white; width: 180px; margin: 5px 0; text-decoration: none; text-align: center; }
+    .a-inline-block {
+      display: inline-block;
+      background-color: orange;
+      color: white;
+      width: 150px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      text-decoration: none;
+      margin: 5px;
+      border-radius: 8px; /* Added rounded corners */
+    }
+
+    /* ===== Comparison Table Styling ===== */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+      background-color: #fff;
+    }
+
+    th, td {
+      border: 1px solid #999;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #dbeafe;
+      color: #003366;
+    }
+
+    tr:nth-child(even) { background-color: #f2f2f2; }
+
+    caption {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: darkblue;
+      font-size: 1.1em;
+    }
+
+    a.jump {
+      color: darkblue;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .back-link {
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .back-link a {
+      color: #444;
+      font-size: 0.9em;
+      text-decoration: none;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Block vs Inline Elements & Display Modes</h1>
+  <p style="text-align:center;">
+    This demo shows <b>block</b> and <b>inline</b> HTML tags, and how their behavior changes with
+    <code>display: block</code>, <code>display: inline</code>, and <code>display: inline-block</code>.
+  </p>
+
+  <!-- TABLE MOVED TO TOP -->
+  <section class="section" id="summary-table">
+    <h2>Comparison Table – Click to Jump to Examples</h2>
+    <table>
+      <caption>Inline vs Block Elements under Different Display Values</caption>
+      <tr>
+        <th>Element Type (clickable)</th>
+        <th>Display</th>
+        <th>Starts on New Line?</th>
+        <th>Width Behavior</th>
+        <th>Can Set Width/Height?</th>
+      </tr>
+      <tr>
+        <td><a class="jump" href="#a-inline">Inline (&lt;a&gt;)</a></td>
+        <td>inline (default)</td>
+        <td>❌ No</td>
+        <td>Content width</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td><a class="jump" href="#a-block">Inline (&lt;a&gt;)</a></td>
+        <td>block</td>
+        <td>✅ Yes</td>
+        <td>Full width</td>
+        <td>✅ Yes</td>
+      </tr>
+      <tr>
+        <td><a class="jump" href="#a-inline-block">Inline (&lt;a&gt;)</a></td>
+        <td>inline-block</td>
+        <td>❌ No</td>
+        <td>Content or set width</td>
+        <td>✅ Yes</td>
+      </tr>
+      <tr>
+        <td><a class="jump" href="#div-block">Block (&lt;div&gt;)</a></td>
+        <td>block (default)</td>
+        <td>✅ Yes</td>
+        <td>Full width</td>
+        <td>✅ Yes</td>
+      </tr>
+      <tr>
+        <td><a class="jump" href="#div-inline">Block (&lt;div&gt;)</a></td>
+        <td>inline</td>
+        <td>❌ No</td>
+        <td>Content width</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td><a class="jump" href="#div-inline-block">Block (&lt;div&gt;)</a></td>
+        <td>inline-block</td>
+        <td>❌ No</td>
+        <td>Content or set width</td>
+        <td>✅ Yes</td>
+      </tr>
+    </table>
+  </section>
+
+  <hr>
+
+  <!-- BLOCK TAG DEMOS -->
+  <section class="section" id="div-block-demo">
+    <h2>Block Tag (&lt;div&gt;) Examples</h2>
+
+    <h3 id="div-block">display: block (default)</h3>
+    <p>Each div starts on a new line and takes full width.</p>
+    <div class="div-block box">DIV 1</div>
+    <div class="div-block box">DIV 2</div>
+
+    <h3 id="div-inline">display: inline</h3>
+    <p>Now divs behave like inline elements and appear side-by-side.</p>
+    <div class="div-inline box">DIV 1</div>
+    <div class="div-inline box">DIV 2</div>
+
+    <h3 id="div-inline-block">display: inline-block</h3>
+    <p>They stay inline but can still have width/height like blocks.</p>
+    <div class="div-inline-block box">DIV 1</div>
+    <div class="div-inline-block box">DIV 2</div>
+  </section>
+
+  <hr>
+
+  <!-- INLINE TAG DEMOS -->
+  <section class="section" id="a-block-demo">
+    <h2>Inline Tag (&lt;a&gt;) Examples</h2>
+
+    <h3 id="a-inline">display: inline (default)</h3>
+    <p>Links flow inline with text, no fixed width or height.</p>
+    <a href="#" class="a-inline">Home</a>
+    <a href="#" class="a-inline">About</a>
+    <a href="#" class="a-inline">Contact</a>
+
+    <h3 id="a-block">display: block</h3>
+    <p>Each link becomes a full-width block and starts on a new line.</p>
+    <a href="#" class="a-block">Home</a>
+    <a href="#" class="a-block">About</a>
+    <a href="#" class="a-block">Contact</a>
+
+    <h3 id="a-inline-block">display: inline-block</h3>
+    <p>Links stay inline we can set width and height.</p>
+    <a href="#" class="a-inline-block">Home</a>
+    <a href="#" class="a-inline-block">About</a>
+    <a href="#" class="a-inline-block">Contact</a>
+  </section>
+
+  <footer style="text-align:center; color:gray;">
+    <p>🧩 Summary: <b>Block</b> = structure, <b>Inline</b> = text, <b>Inline-Block</b> = hybrid</p>
+  </footer>
+
+</body>
+</html>

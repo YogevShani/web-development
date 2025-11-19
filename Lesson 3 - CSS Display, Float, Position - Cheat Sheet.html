@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Cheat Sheet – Display, Float, Position</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #003366;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #e7f0ff;
+      color: #003366;
+    }
+    tr:nth-child(even) { background-color: #f7f7f7; }
+
+  </style>
+</head>
+
+<body>
+
+<h1>CSS Cheat Sheet, Display / Float / Position</h1>
+
+<!-- ======================================== -->
+<!-- SECTION 1: DISPLAY -->
+<!-- ======================================== -->
+<h2>1. Display</h2>
+
+<table>
+  <tr>
+    <th>Property / Value</th>
+    <th>Meaning</th>
+    <th>Behavior</th>
+    <th>Example</th>
+  </tr>
+
+  <tr>
+    <td>display: block</td>
+    <td>Element behaves as block</td>
+    <td>Starts on new line, full width, can set width/height</td>
+    <td>&lt;div style="display:block"&gt;...&lt;/div&gt;</td>
+  </tr>
+
+  <tr>
+    <td>display: inline</td>
+    <td>Inline element</td>
+    <td>No new line, width equals content, cannot set width/height</td>
+    <td>&lt;a style="display:inline"&gt;Link&lt;/a&gt;</td>
+  </tr>
+
+  <tr>
+    <td>display: inline-block</td>
+    <td>Hybrid of inline + block</td>
+    <td>No new line, but width/height allowed</td>
+    <td>&lt;div style="display:inline-block; width:100px;"&gt;&lt;/div&gt;</td>
+  </tr>
+
+  <tr>
+    <td>Default block elements</td>
+    <td>Structural tags</td>
+    <td>Take full width</td>
+    <td>div, p, ul, li, h1-h6</td>
+  </tr>
+
+  <tr>
+    <td>Default inline elements</td>
+    <td>Text-level elements</td>
+    <td>Flow inside text</td>
+    <td>span, a, b, i, u, img</td>
+  </tr>
+
+</table>
+
+
+
+
+<!-- ======================================== -->
+<!-- SECTION 2: FLOAT -->
+<!-- ======================================== -->
+<h2>2. Float</h2>
+
+<table>
+  <tr>
+    <th>Float Feature</th>
+    <th>Description</th>
+    <th>Effect</th>
+    <th>Example</th>
+  </tr>
+
+  <tr>
+    <td>float: left</td>
+    <td>Push element to the left</td>
+    <td>Text wraps around the floated element</td>
+    <td>.img { float:left }</td>
+  </tr>
+
+  <tr>
+    <td>float: right</td>
+    <td>Push element to right side</td>
+    <td>Used for sidebar layouts</td>
+    <td>.sidebar { float:right }</td>
+  </tr>
+
+  <tr>
+    <td>Both image + text floated</td>
+    <td>If both float, text no longer wraps normally</td>
+    <td>Each floated element takes its own side</td>
+    <td>img {float:left}, p {float:right}</td>
+  </tr>
+
+  <tr>
+    <td>Two-column layout</td>
+    <td>Using float for layout</td>
+    <td>Sidebar left, main content right</td>
+    <td>.sidebar {float:left}, .main {float:right}</td>
+  </tr>
+
+  <tr>
+    <td>clear: both</td>
+    <td>Stops floating and forces next line</td>
+    <td>Prevents overlap of footer/content</td>
+    <td>.footer { clear:both }</td>
+  </tr>
+
+  <tr>
+    <td>No float</td>
+    <td>Natural document flow</td>
+    <td>Elements stack normally</td>
+    <td>display:block</td>
+  </tr>
+
+  <tr>
+    <td>Inline-block instead of float</td>
+    <td>Alternative layout technique</td>
+    <td>Elements appear side by side without wrapping text</td>
+    <td>.box {display:inline-block}</td>
+  </tr>
+
+</table>
+
+
+
+
+<!-- ======================================== -->
+<!-- SECTION 3: POSITION -->
+<!-- ======================================== -->
+<h2>3. Position</h2>
+
+<table>
+  <tr>
+    <th>position Value</th>
+    <th>Description</th>
+    <th>Behavior</th>
+    <th>Example</th>
+  </tr>
+
+  <tr>
+    <td>static</td>
+    <td>Default position</td>
+    <td>Normal flow, offsets ignored</td>
+    <td>.box { position:static }</td>
+  </tr>
+
+  <tr>
+    <td>relative</td>
+    <td>Moves relative to its normal place</td>
+    <td>Space remains reserved</td>
+    <td>.box { position:relative; top:20px; }</td>
+  </tr>
+
+  <tr>
+    <td>absolute</td>
+    <td>Removed from flow</td>
+    <td>Positioned relative to nearest positioned parent</td>
+    <td>.child { position:absolute; top:30px; }</td>
+  </tr>
+
+  <tr>
+    <td>fixed</td>
+    <td>Attached to viewport</td>
+    <td>Stays visible when scrolling</td>
+    <td>.menu { position:fixed; bottom:10px; }</td>
+  </tr>
+
+  <tr>
+    <td>sticky</td>
+    <td>Behaves as relative until threshold</td>
+    <td>Then sticks to top like fixed</td>
+    <td>.header { position:sticky; top:0; }</td>
+  </tr>
+
+  <tr>
+    <td>Absolute with container</td>
+    <td>First positioned ancestor becomes reference</td>
+    <td>Parent must use relative/absolute/fixed/sticky</td>
+    <td>.parent {position:relative}, .child {position:absolute}</td>
+  </tr>
+
+</table>
+
+</body>
+</html>
