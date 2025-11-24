@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSS Position Demo</title>
+
+  <style>
+    /* Wrong example */
+    .box-wrong {
+      width: 150px;
+      height: 100px;
+      background-color: lightcoral;
+      left: 150px;    /* Will not work */
+      margin-bottom: 30px;
+    }
+
+    /* Correct example */
+    .box-correct {
+      width: 150px;
+      height: 100px;
+      background-color: lightgreen;
+      position: relative;
+      left: 150px;
+      margin-top: 20px;
+    }
+
+    #answer-section {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid gray;
+      background-color: #f4f4f4;
+    }
+  </style>
+
+  <script>
+    function showAnswer() {
+      document.getElementById("answer-section").style.display = "block";
+    }
+  </script>
+
+</head>
+<body>
+
+  <h2>CSS Position Test</h2>
+
+  <p>Below is the CSS code applied to the red box:</p>
+
+  <pre>
+.box-wrong {
+  width: 150px;
+  height: 100px;
+  background-color: lightcoral;
+  left: 150px;   }
+  </pre>
+
+  <p>Question: Why is the red box not moving even though we used left: 150px</p>
+
+  <div class="box-wrong"></div>
+
+  <button onclick="showAnswer()">Show Answer</button>
+
+  <div id="answer-section">
+    <h3>The Answer</h3>
+
+    <p>
+      The property left works only when the element has a position value such as relative, absolute or fixed.  
+      Because we did not set any position, the browser uses the default value which is position: static, and in static mode the properties top, left, right and bottom have no effect.  
+      This is why the red box does not move.
+    </p>
+
+    <h4>Correct CSS:</h4>
+    <pre>
+.box-correct {
+  width: 150px;
+  height: 100px;
+  background-color: lightgreen;
+
+  position: relative;
+  left: 150px;
+}
+    </pre>
+
+    <h4>Correct Visual Result:</h4>
+    <div class="box-correct"></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSS Display Demo</title>
+
+  <style>
+    /* Wrong example */
+    .box-wrong {
+      display: inline;
+      width: 200px;   /* Will not work */
+      height: 80px;
+      background-color: lightcoral;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Correct example */
+    .box-correct {
+      display: inline-block;
+      width: 200px;
+      height: 80px;
+      background-color: lightgreen;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    #answer-section {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid gray;
+      background-color: #f4f4f4;
+    }
+  </style>
+
+  <script>
+    function showAnswer() {
+      document.getElementById("answer-section").style.display = "block";
+    }
+  </script>
+</head>
+
+<body>
+
+  <h2>CSS Display Test</h2>
+
+  <p>Below is the CSS code applied to the red box:</p>
+
+  <pre>
+.box-wrong {
+  display: inline;
+  width: 200px;   
+  height: 80px;
+  background-color: lightcoral;
+}
+  </pre>
+
+  <p>Question: Why is the width not changing even though we set width: 200px</p>
+
+  <div class="box-wrong">Red Box</div>
+
+  <br><br>
+  <button onclick="showAnswer()">Show Answer</button>
+
+  <div id="answer-section">
+    <h3>The Answer</h3>
+
+    <p>
+The width property does not work on inline elements.<br>
+The div was set to display: inline so the browser ignores the width value and the element shrinks to fit its content.<br>
+A div normally has a default display value of block, and in block mode width works.<br>
+To allow the width property to work here, the element can be inline-block or block.<br>
+
+    </p>
+
+    <h4>Correct CSS:</h4>
+    <pre>
+.box-correct {
+  display: inline-block;
+  width: 200px;
+  height: 80px;
+  background-color: lightgreen;
+}
+    </pre>
+
+    <h4>Correct Visual Result:</h4>
+    <div class="box-correct">Green Box</div>
+  </div>
+
+</body>
+</html>
