@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Understanding the Viewport in HTML</title>
+
+<!-- Correct viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+}
+
+section {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+
+h1, h2 {
+    color: #2c3e50;
+}
+
+pre, code {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 5px;
+    display: block;
+    white-space: pre;
+    font-family: Consolas, monospace;
+}
+
+img {
+    max-width: 100 percent;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+.links-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #eef7ff;
+    border: 1px solid #bcd7f7;
+    border-radius: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Understanding the HTML Viewport</h1>
+
+<section>
+<h2>1. What is the viewport</h2>
+<p>
+The viewport is the visible area of a web page inside the browser window.  
+Different devices have different viewport sizes.  
+A desktop screen is wide, a phone screen is narrow.  
+If the page does not adjust to the device, the layout becomes too big or too small.
+</p>
+</section>
+
+<section>
+<h2>2. Why the viewport meta tag is needed</h2>
+<p>
+Without the viewport meta tag, mobile browsers zoom out automatically.  
+The entire page becomes very small, text is hard to read, and the layout does not respond to screen size.  
+The viewport meta tag tells the browser to match the page width to the device width and use normal zoom.
+</p>
+
+<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+<p>
+<b>width=device-width</b> tells the browser to set the page width equal to the device screen width.  
+<b>initial-scale=1.0</b> tells the browser to load the page with normal zoom, not zoomed out.
+</p>
+</section>
+
+<section>
+<h2>3. Visual example</h2>
+<p>
+The image below shows the difference between a page with the viewport tag and a page without it.
+</p>
+
+<!-- You will provide this PNG -->
+<img src="vp Vs no vp example.png" alt="Viewport example image">
+</section>
+
+<section>
+<h2>4. View the live examples</h2>
+<p>
+Click the links below to open two versions of the same page.  
+Resize your browser window or open on a phone to see the difference.
+</p>
+
+<div class="links-container">
+    <p><a href="viewport.html" target="_blank">Responsive version with viewport</a></p>
+    <p><a href="no-viewport.html" target="_blank">Non responsive version without viewport</a></p>
+</div>
+</section>
+
+<section>
+<h2>4.1 Another example with image and text</h2>
+
+<p>
+The following example shows how an image and a block of text behave on a responsive page compared to a non responsive page.  
+Resize the browser window or open the links on a phone to see the layout change.
+</p>
+
+<!-- You will place your image name here -->
+<img src="img vp Vs no vp example.png" alt="Responsive image and text example">
+
+<div class="links-container">
+    <p><a href="PUT-RESPONSIVE-PAGE-NAME-HERE.html" target="_blank">Responsive version with image and text</a></p>
+    <p><a href="PUT-NONRESPONSIVE-PAGE-NAME-HERE.html" target="_blank">Non responsive version with image and text</a></p>
+</div>
+
+<h3>Why the image behaves correctly in the responsive page</h3>
+
+<p>
+The responsive example uses two important CSS rules:
+</p>
+
+<pre><code>
+img {
+    max-width: 100 percent;
+    height: auto;
+}
+</code></pre>
+
+<p>
+<b>max-width: 100 percent</b> tells the browser that the image should never be wider than its container.  
+This allows the image to shrink when the screen is smaller than the image width.  
+Without this rule the image keeps its original size and becomes wider than the phone screen.
+</p>
+
+<p>
+<b>height: auto</b> preserves the correct shape of the image when it is resized.  
+The browser adjusts the height automatically so the image does not stretch or get distorted.
+</p>
+
+<p>
+Together these two rules make the image fully responsive and allow the text to flow below it in a readable layout.
+</p>
+
+</section>
+
+
+
+<section>
+<h2>5. Summary</h2>
+<ul>
+    <li>Viewport defines the visible area of a page</li>
+    <li>Mobile browsers zoom out by default if no viewport is set</li>
+    <li>The meta viewport tag makes pages responsive</li>
+    <li>width=device-width fits the content to the device</li>
+    <li>initial-scale=1.0 loads the page at normal zoom</li>
+</ul>
+</section>
+
+</body>
+</html>
