@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar Step by Step</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+        }
+
+        pre, code {
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            padding: 8px;
+            display: block;
+            white-space: pre;
+            font-family: Consolas, monospace;
+        }
+
+        /* ===== NAVBAR DESIGN ===== */
+
+        /* Remove bullet points */
+        ul.removeBullet {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Make menu horizontal */
+        li.horizontal {
+            width: 10%;
+            float: left;
+        }
+
+        /* Link design */
+        a.button {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            background: url("menu-background-3.jpg") no-repeat;
+        }
+
+            /* Link design */
+        a.block {
+            display: block;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        /* Hover effect */
+        a.buttonHover:hover {
+            background: url("menu-background-4.jpg") no-repeat;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>Building a Horizontal Navbar Step by Step</h1>
+
+<!-- ================== STEP 1 ================== -->
+
+<section>
+<h2>1. Basic Navbar Without Design</h2>
+
+<p>
+First, we build a navbar using only HTML.  
+Right now, there is **no CSS at all**, so the browser shows a simple vertical list.
+</p>
+
+<p>
+This is how the navbar looks without design.
+</p>
+
+<!-- ✅ THEN THE CODE -->
+<pre><code>&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="category1.html"&gt;Home Page&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="about.html"&gt;About US&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="products.html"&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+
+<!-- ✅ LIVE PREVIEW FIRST -->
+<nav>
+    <ul>
+        <li><a href="#">Home Page</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About US</a></li>
+        <li><a href="#">Products</a></li>
+    </ul>
+</nav>
+
+<p>
+The browser automatically shows this as a vertical menu with bullet points.
+</p>
+</section>
+
+<!-- ================== STEP 2 ================== -->
+
+<section>
+<h2>2. The Same Navbar With CSS Applied</h2>
+
+<p>
+Now we apply CSS to design the menu so links will look like buttons.
+</p>
+
+</section>
+
+<section>
+<h2>3. Removing the Bullet Points</h2>
+
+<pre><code>
+ul {
+    list-style-type: none;
+}
+</code></pre>
+
+<p>
+By default, the browser places dots before each list item.  
+This rule removes them so the menu looks clean.
+</p>
+
+<nav>
+    <ul class="removeBullet">
+        <li><a href="category1.html">Home Page</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About US</a></li>
+        <li><a href="products.html">Products</a></li>
+    </ul>
+</nav>
+
+
+</section>
+
+<section>
+<h2>4. Making the Menu Horizontal</h2>
+
+<pre><code>
+li {
+    width: 10%;
+    float: left;
+}
+</code></pre>
+
+<p>
+float left moves all menu buttons into one horizontal row.  
+width 10 percent controls how much horizontal space each button gets from its parent container's width.
+</p>
+
+<nav>
+    <ul class="removeBullet">
+        <li class="horizontal"><a href="category1.html">Home Page</a></li>
+        <li class="horizontal"><a href="contact.html">Contact</a></li>
+        <li class="horizontal"><a href="about.html">About US</a></li>
+        <li class="horizontal"><a href="products.html">Products</a></li>
+    </ul>
+</nav>
+<div style="clear: both;"></div>
+
+</section>
+
+<section>
+<h2>5. Styling the Links as Buttons</h2>
+
+<pre><code>
+a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    background: url("menu-background-3.jpg") no-repeat;
+}
+</code></pre>
+
+<p>
+text decoration none removes the underline  
+color white changes the text color  
+padding makes the button larger  
+background adds an image to the button
+</p>
+
+<nav>
+    <ul class="removeBullet">
+        <li class="horizontal"><a class="button" href="category1.html">Home Page</a></li>
+        <li class="horizontal"><a class="button" href="contact.html">Contact</a></li>
+        <li class="horizontal"><a class="button" href="about.html">About US</a></li>
+        <li class="horizontal"><a class="button" href="products.html">Products</a></li>
+    </ul>
+</nav>
+<div style="clear: both;"></div>
+
+</section>
+
+<section>
+<h2>6. Improve the links look like Buttons</h2>
+
+<pre><code>
+a {
+    display: block;
+    border-radius: 10px;
+    margin: 2px;
+}
+</code></pre>
+
+<p>
+display block makes the entire button clickable
+border-radius to round the button corners
+margin to make small space between buttons  
+</p>
+
+<nav>
+    <ul class="removeBullet">
+        <li class="horizontal"><a class="button block" href="category1.html">Home Page</a></li>
+        <li class="horizontal"><a class="button block" href="contact.html">Contact</a></li>
+        <li class="horizontal"><a class="button block" href="about.html">About US</a></li>
+        <li class="horizontal"><a class="button block" href="products.html">Products</a></li>
+    </ul>
+</nav>
+<div style="clear: both;"></div>
+
+</section>
+
+
+<section>
+<h2>7. Adding Hover Effect</h2>
+
+<pre><code>
+a:hover {
+    background: url("menu-background-4.jpg") no-repeat;
+}
+</code></pre>
+
+<p>
+When the mouse is placed over a button, the background image changes.  
+This makes the menu interactive and user friendly.
+</p>
+
+<nav>
+    <ul class="removeBullet">
+        <li class="horizontal"><a class="button block buttonHover" href="category1.html">Home Page</a></li>
+        <li class="horizontal"><a class="button block buttonHover" href="contact.html">Contact</a></li>
+        <li class="horizontal"><a class="button block buttonHover" href="about.html">About US</a></li>
+        <li class="horizontal"><a class="button block buttonHover" href="products.html">Products</a></li>
+    </ul>
+</nav>
+<div style="clear: both;"></div>
+
+</section>
+
+<section>
+<h2>8. Summary</h2>
+
+<ul>
+    <li>The navbar is built using a list of links</li>
+    <li>ul removes dots using list style type none</li>
+    <li>li becomes horizontal using float left</li>
+    <li>a is styled like a button</li>
+    <li>a hover adds mouse interaction</li>
+</ul>
+
+</section>
+
+</body>
+</html>

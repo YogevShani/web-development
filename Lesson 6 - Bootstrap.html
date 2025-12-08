@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bootstrap Step 1, Getting Started</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ✅ Bootstrap CSS from CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+  .my-nav {
+    background-color: rgb(248, 25, 237);
+  }
+  
+.image-container-demo {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border: 3px solid #3b6ea5;
+}
+
+.top-bar {
+  height: 25px;
+  background-color: #d8ecff;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.main-content {
+  height: 90px;
+  background-color: #9b83c3;
+  border-radius: 6px;
+}
+
+.side-content {
+  height: 90px;
+  background-color: #fde7c8;
+  border-radius: 6px;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background-color: #f8f9fa;
+  line-height: 1.6;
+}
+
+/* section layout like previous lessons */
+section {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+}
+
+pre, code {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 8px;
+  display: block;
+  white-space: pre;
+  font-family: Consolas, monospace;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Bootstrap, Step 1, Getting Started</h1>
+
+<!-- ========================= -->
+<!-- WHAT IS BOOTSTRAP -->
+<!-- ========================= -->
+
+<section>
+<h2>1. What Is Bootstrap</h2>
+
+<p>
+Bootstrap (formerly Twitter Bootstrap) is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.<br>
+It contains HTML, CSS and (optionally) JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.
+<br><br>
+As of May 2023, Bootstrap is the 17th most starred project (4th most starred library) on GitHub, with over 164,000 stars. According to W3Techs, Bootstrap is used by 19.2% of all websites.
+</p>
+
+<p>
+Instead of writing everything from scratch, we use built-in Bootstrap classes.
+</p>
+</section>
+
+<!-- ========================= -->
+<!-- ADDING BOOTSTRAP -->
+<!-- ========================= -->
+
+<section>
+<h2>2. Adding Bootstrap to an HTML Page</h2>
+
+<p>
+The easiest way to add Bootstrap is by using a CDN (Content Delivery Network) link inside the <b>&lt;head&gt;</b> tag.
+<br>1. The file is stored on powerful servers around the world
+<br>2. The website downloads the file directly from the internet
+<br>3. As a developer, you do not need to download or install anything manually
+</p>
+
+<pre><code>&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+</code></pre>
+
+<p>
+Once this line is added, Bootstrap classes are ready to use.
+</p>
+</section>
+
+<!-- ========================= -->
+<!-- FIRST BOOTSTRAP EXAMPLE -->
+<!-- ========================= -->
+
+<section>
+<h2>3. Your First Bootstrap Example</h2>
+
+<p>
+Below is a simple example of a Bootstrap styled button.
+No custom CSS is needed.
+</p>
+
+<pre><code>&lt;button class="btn btn-primary"&gt;Click Me&lt;/button&gt;
+</code></pre>
+
+<p>
+Live result:
+</p>
+
+<button class="btn btn-primary">Click Me</button>
+
+</section>
+
+<!-- ========================= -->
+<!-- WHY IT WORKS -->
+<!-- ========================= -->
+
+<section>
+<h2>4. Why This Works, The Real CSS Behind btn-primary</h2>
+
+<p>
+When we write this:
+</p>
+
+<pre><code>
+&lt;button class="btn btn-primary"&gt;Click Me&lt;/button&gt;
+</code></pre>
+
+<p>
+The styling does NOT come from our file.  
+It comes from the Bootstrap CSS file that we loaded using the CDN.
+</p>
+
+<p>
+Here is the REAL CSS that Bootstrap uses for <b>btn-primary</b> (original version from the Bootstrap file):
+</p>
+
+<pre><code>
+.btn-primary{
+  --bs-btn-color:#fff;
+  --bs-btn-bg:#0d6efd;
+  --bs-btn-border-color:#0d6efd;
+
+  --bs-btn-hover-color:#fff;
+  --bs-btn-hover-bg:#0b5ed7;
+  --bs-btn-hover-border-color:#0a58ca;
+
+  --bs-btn-focus-shadow-rgb:49,132,253;
+
+  --bs-btn-active-color:#fff;
+  --bs-btn-active-bg:#0a58ca;
+  --bs-btn-active-border-color:#0a53be;
+
+  --bs-btn-active-shadow:inset 0 3px 5px rgba(0, 0, 0, 0.125);
+
+  --bs-btn-disabled-color:#fff;
+  --bs-btn-disabled-bg:#0d6efd;
+  --bs-btn-disabled-border-color:#0d6efd;
+}
+</code></pre>
+
+<p>
+<b>Important:</b><br>
+All values that start with <b>--bs-btn</b> are <b>Bootstrap CSS variables</b>.  
+For example, <b>--bs-btn-bg:#0d6efd</b> stores the main blue color of the button.
+</p>
+
+<p>
+This means:
+</p>
+
+<ul>
+  <li>The main button background is <b>blue</b></li>
+  <li>The text color is <b>white</b></li>
+  <li>On hover, the blue becomes <b>darker</b></li>
+  <li>On click, the button looks <b>pressed in</b></li>
+  <li>When disabled, the button keeps its color but becomes inactive</li>
+</ul>
+
+<p>
+The idea behind this example:
+</p>
+
+<p>
+<b>.btn</b> builds the button structure and spacing  
+<b>.btn-primary</b> only supplies the colors and effects  
+</p>
+
+<p>
+So Bootstrap is not magic, it is just a very big ready-made CSS file.
+</p>
+
+</section>
+
+
+<section>
+<h2>Bootstrap Containers</h2>
+
+<h3>1. What Is a Bootstrap Container</h3>
+
+<p>
+A Bootstrap <b>container</b> is a wrapper that holds and centers the content of the page.  
+Almost every Bootstrap layout starts with a container.
+</p>
+
+<p>
+The container controls:
+</p>
+
+<ul>
+  <li>The maximum width of the content</li>
+  <li>The side margins</li>
+  <li>The responsive behavior of the layout</li>
+</ul>
+
+<h3>2. Types of Bootstrap Containers</h3>
+
+<pre><code>
+&lt;div class="container"&gt;...&lt;/div&gt;
+&lt;div class="container-fluid"&gt;...&lt;/div&gt;
+</code></pre>
+
+<ul>
+  <li><b>container</b>, fixed max width, centered</li>
+  <li><b>container-fluid</b>, always 100 percent width</li>
+</ul>
+
+<h3>3. container, Fixed Width Example</h3>
+
+<pre><code>&lt;div class="container"&gt;
+  This is a fixed width container
+&lt;/div&gt;
+</code></pre>
+
+<div class="container image-container-demo">
+<div class="row">
+  <div class="col-12 top-bar"></div>
+</div>
+  <div class="row">
+    <div class="col-10 main-content"></div>
+    <div class="col-2 side-content"></div>
+  </div>
+</div>
+
+<br><br>
+<h3>4. container-fluid, Full Width Example</h3>
+
+<pre><code>&lt;div class="container-fluid"&gt;
+  This is a full width container
+&lt;/div&gt;
+</code></pre>
+
+<div class="container-fluid image-container-demo">
+<div class="row">
+  <div class="col-12 top-bar"></div>
+</div>
+  <div class="row">
+    <div class="col-10 main-content"></div>
+    <div class="col-2 side-content"></div>
+  </div>
+</div>
+
+<br><br>
+<h3>5. Responsive Behavior</h3>
+
+<p>
+Resize your browser window and look at the difference:
+</p>
+
+<ul>
+  <li>The <b>container</b> stays centered and limited in width</li>
+  <li>The <b>container-fluid</b> always fills the entire screen</li>
+</ul>
+
+<pre><code>&lt;div class="container"&gt;
+   &lt;!-- rows and columns go here --&gt;
+&lt;/div&gt;
+</code></pre>
+
+<br><br>
+<h3>6. Summary</h3>
+
+<ul>
+  <li>A container wraps the page content</li>
+  <li>container is centered and has max width</li>
+  <li>container-fluid is always full width</li>
+  <li>Every Bootstrap layout starts with a container</li>
+</ul>
+
+</section>
+
+
+<section>
+<h2>Bootstrap Grid View, How Layout Really Works</h2>
+
+<h3>1. Basic Grid Structure</h3>
+
+<p>
+Every Bootstrap grid is built from <b>three mandatory layers</b>:
+</p>
+
+<ol>
+  <li><b>container</b>, wraps the entire layout</li>
+  <li><b>row</b>, creates a horizontal line</li>
+  <li><b>col-*</b>, creates the columns inside the row</li>
+</ol>
+
+<p>
+This is the basic structure:
+</p>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-4" style="background-color: aqua;">one of three columns</div>
+    <div class="col-sm-4" style="background-color: red;">one of three columns</div>
+    <div class="col-sm-4" style="background-color: lightgreen;">one of three columns</div>
+
+  </div>
+</div>
+<br>
+<pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+
+    &lt;div class="col-sm-4"&gt;one of three columns&lt;/div&gt;
+    &lt;div class="col-sm-4"&gt;one of three columns&lt;/div&gt;
+    &lt;div class="col-sm-4"&gt;one of three columns&lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>
+Explanation:
+</p>
+
+<ul>
+  <li><b>container</b> controls the outer width and centering</li>
+  <li><b>row</b> activates the Flexbox grid system</li>
+  <li><b>col-sm-4</b> means: each column takes <b>4 parts out of 12</b></li>
+</ul>
+
+<p>
+Since <b>4 + 4 + 4 = 12</b>, the three columns fit perfectly on one row.
+</p>
+
+
+
+<h3>2. What Does col-sm-4 Mean</h3>
+
+<p>
+The class name <b>col-sm-4</b> is made of three parts:
+</p>
+
+<ul>
+  <li><b>col</b> = this is a column</li>
+  <li><b>sm</b> = this layout starts from <b>small screens and up</b></li>
+  <li><b>4</b> = this column takes <b>4 out of 12 parts</b></li>
+</ul>
+
+<p>
+So:
+</p>
+
+<ul>
+  <li>On <b>small screens and larger</b>, we get 3 columns in one row</li>
+  <li>On <b>very small screens</b>, they stack one under another automatically</li>
+</ul>
+
+<p>
+Example - Change screen size to see how it changes:
+</p>
+
+<p>
+This is using <b>col-sm-4</b>:
+</p>
+
+<p>
+Once screen is smaller then 576px, the 3 columns will stack one under the other automatically:
+</p>
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-4" style="background-color: aqua;">one of three columns</div>
+    <div class="col-sm-4" style="background-color: red;">one of three columns</div>
+    <div class="col-sm-4" style="background-color: lightgreen;">one of three columns</div>
+
+  </div>
+</div>
+<br>
+<br>
+<p>
+This is using <b>col-md-4</b>:
+</p>
+
+<p>
+Once screen is smaller then 768px, the 3 columns will stack one under the other automatically:
+</p>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4" style="background-color: aqua;">one of three columns</div>
+    <div class="col-md-4" style="background-color: red;">one of three columns</div>
+    <div class="col-md-4" style="background-color: lightgreen;">one of three columns</div>
+
+  </div>
+</div>
+<br>
+
+
+
+
+<h3>3. Bootstrap Grid Breakpoints</h3>
+
+<p>
+Bootstrap changes layout based on screen width. These are the main breakpoints:
+</p>
+
+<ul>
+  <li><b>Extra small (xs)</b>, below 576px → <b>col-</b></li>
+  <li><b>Small (sm)</b>, 576px and up → <b>col-sm-</b></li>
+  <li><b>Medium (md)</b>, 768px and up → <b>col-md-</b></li>
+  <li><b>Large (lg)</b>, 992px and up → <b>col-lg-</b></li>
+  <li><b>Extra large (xl)</b>, 1200px and up → <b>col-xl-</b></li>
+</ul>
+
+
+
+<h3>4. Max Container Width by Screen Size for Non-Fluid Container</h3>
+
+<p>
+Bootstrap container automatically changes its maximum width:
+</p>
+
+<ul>
+  <li>Small screens → about <b>540px</b></li>
+  <li>Medium screens → about <b>720px</b></li>
+  <li>Large screens → about <b>960px</b></li>
+  <li>Extra large screens → about <b>1140px</b></li>
+</ul>
+
+<p>
+container → limited width, centered
+<br>
+container-fluid → unlimited width, full screen</p>
+
+
+
+<section>
+<h2>Responsive Breakpoints, How Bootstrap Knows When to Change Layout</h2>
+
+<p>
+Bootstrap changes the layout automatically based on the <b>screen width</b>.  
+It does this using <b>CSS media queries</b>, which check how wide the device screen is.
+</p>
+
+<h3>1. Extra Small Devices (Phones, Less Than 768px)</h3>
+
+<pre><code>
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+</code></pre>
+
+<p>
+This means:
+</p>
+
+<ul>
+  <li>Phones are the <b>default layout</b> in Bootstrap</li>
+  <li>No media query is needed for this size</li>
+  <li>On very small screens, columns usually <b>stack vertically</b></li>
+</ul>
+
+
+
+<h3>2. Small Devices (Tablets, 768px and Up)</h3>
+
+<pre><code>
+@media (min-width: @screen-sm-min) { ... }
+</code></pre>
+
+<p>
+This means:
+</p>
+
+<ul>
+  <li>When the screen becomes <b>768px wide or more</b></li>
+  <li>Bootstrap activates the <b>small (sm)</b> layout</li>
+  <li>Classes like <b>col-sm-4</b> start working</li>
+</ul>
+
+
+<h3>3. Medium Devices (Desktops, 992px and Up)</h3>
+
+<pre><code>
+@media (min-width: @screen-md-min) { ... }
+</code></pre>
+
+<ul>
+  <li>Activated at <b>992px and wider</b></li>
+  <li>This is for <b>laptops and regular desktops</b></li>
+  <li>Classes like <b>col-md-6</b> become active</li>
+</ul>
+
+
+
+<h3>4. Large Devices (Large Desktops, 1200px and Up)</h3>
+
+<pre><code>
+@media (min-width: @screen-lg-min) { ... }
+</code></pre>
+
+<ul>
+  <li>Activated at <b>1200px and wider</b></li>
+  <li>This is for <b>large computer screens</b></li>
+  <li>Classes like <b>col-lg-3</b> become active</li>
+</ul>
+
+
+
+<h3>5. Using max-width to Target Only a Specific Range</h3>
+
+<pre><code>
+@media (max-width: @screen-xs-max) { ... }
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+</code></pre>
+
+<p>
+This allows Bootstrap to apply CSS:
+</p>
+
+<ul>
+  <li>Only on <b>phones</b></li>
+  <li>Only on <b>tablets</b></li>
+  <li>Only on <b>laptops</b></li>
+</ul>
+
+<p>
+Instead of saying “from this size and up”, we say “<b>only in this exact size range</b>”.
+</p>
+
+
+
+<h3>6. How This Affects Bootstrap Columns</h3>
+
+<p>
+When you write:
+</p>
+
+<pre><code>
+&lt;div class="col-sm-4 col-md-6 col-lg-3"&gt;&lt;/div&gt;
+</code></pre>
+
+<p>
+Bootstrap behaves like this:
+</p>
+
+<ul>
+  <li>Below <b>768px</b>, columns stack vertically</li>
+  <li>From <b>768px</b>, it becomes <b>col-sm-4</b></li>
+  <li>From <b>992px</b>, it becomes <b>col-md-6</b></li>
+  <li>From <b>1200px</b>, it becomes <b>col-lg-3</b></li>
+</ul>
+
+
+
+<h3>7. Summary</h3>
+
+<ul>
+  <li>Bootstrap uses <b>media queries</b> to detect screen size</li>
+  <li>Each screen size has a name: <b>xs, sm, md, lg</b></li>
+  <li>Each size activates different column layouts</li>
+  <li>This is what makes Bootstrap <b>fully responsive</b></li>
+</ul>
+
+</section>
+
+
+<h3>5. Summary</h3>
+
+<ul>
+  <li>The Bootstrap grid is always based on <b>12 columns</b></li>
+  <li><b>container → row → col</b> is the required structure</li>
+  <li><b>col-sm-4</b> means 3 equal columns starting from small screens</li>
+  <li>Breakpoints control when columns stack or stay horizontal</li>
+  <li>Everything is responsive automatically</li>
+</ul>
+
+</section>
+
+
+<section>
+<h2>Bootstrap Buttons</h2>
+
+<p>
+Bootstrap provides ready-made button styles that give visual meaning to actions.  
+Each button color represents a different type of action such as primary, success, warning, or danger.
+</p>
+
+<h3>1. Live Button Examples</h3>
+
+<p>
+These are the exact button types shown in the slide:
+</p>
+
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-link">Link</button>
+
+<br><br>
+
+<h3>2. Button Code Examples</h3>
+
+<p>
+This is how each button is created in HTML:
+</p>
+
+<pre><code>&lt;!-- Primary action --&gt;
+&lt;button type="button" class="btn btn-primary"&gt;Primary&lt;/button&gt;
+
+&lt;!-- Secondary outline button --&gt;
+&lt;button type="button" class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+
+&lt;!-- Success message or positive action --&gt;
+&lt;button type="button" class="btn btn-success"&gt;Success&lt;/button&gt;
+
+&lt;!-- Informational button --&gt;
+&lt;button type="button" class="btn btn-info"&gt;Info&lt;/button&gt;
+
+&lt;!-- Warning, attention required --&gt;
+&lt;button type="button" class="btn btn-warning"&gt;Warning&lt;/button&gt;
+
+&lt;!-- Dangerous or destructive action --&gt;
+&lt;button type="button" class="btn btn-danger"&gt;Danger&lt;/button&gt;
+
+&lt;!-- Looks like a link but behaves like a button --&gt;
+&lt;button type="button" class="btn btn-link"&gt;Link&lt;/button&gt;
+</code></pre>
+
+
+<h3>3. What Does Each Button Mean</h3>
+
+<ul>
+  <li><b>Primary</b>, main action on the page</li>
+  <li><b>Secondary</b>, alternative action</li>
+  <li><b>Success</b>, successful or positive action</li>
+  <li><b>Info</b>, informational message</li>
+  <li><b>Warning</b>, caution required</li>
+  <li><b>Danger</b>, delete, remove, or risky action</li>
+  <li><b>Link</b>, looks like a link but acts as a button</li>
+</ul>
+
+
+<h3>4. Important Rule About Bootstrap Buttons</h3>
+
+<p>
+Every Bootstrap button is built from <b>two classes together</b>:
+</p>
+
+<ul>
+  <li><b>btn</b>, activates basic button styling</li>
+  <li><b>btn-primary, btn-success, btn-danger</b>, choose the color and meaning</li>
+</ul>
+
+<p>
+Without <b>btn</b>, the button will NOT look like a Bootstrap button.
+</p>
+
+
+
+<h3>5. Summary</h3>
+
+<ul>
+  <li>Bootstrap buttons come with built-in colors and meanings</li>
+  <li>They require two classes, <b>btn</b> and a color class</li>
+  <li>They save time and keep design consistent</li>
+  <li>The color of the button helps users understand the action</li>
+</ul>
+
+</section>
+
+<section>
+<h2>Adding Items to the Navbar and Changing Its Color</h2>
+
+<p>
+In Bootstrap, the navbar is built using a combination of HTML elements and predefined classes.  
+We can easily add menu items, mark an item as active, disable items, and change the navbar color in several ways.
+</p>
+
+
+<h3>1. Basic Navbar With Items</h3>
+
+<p>
+This is a basic structure:
+</p>
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <ul class="navbar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Active</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+
+  </ul>
+</nav><br>
+
+<pre><code>&lt;nav class="navbar navbar-dark bg-dark navbar-expand-lg"&gt;
+  &lt;ul class="navbar-nav"&gt;
+
+    &lt;li class="nav-item"&gt;
+      &lt;a class="nav-link active" href="#"&gt;Active&lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li class="nav-item"&gt;
+      &lt;a class="nav-link disabled" href="#"&gt;Disabled&lt;/a&gt;
+    &lt;/li&gt;
+
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+
+<p>
+Explanation:
+</p>
+
+<ul>
+  <li><b>navbar</b>, activates the Bootstrap navbar component</li>
+  <li><b>navbar-dark</b>, makes the text suitable for dark backgrounds</li>
+  <li><b>bg-dark</b>, gives the navbar a dark background color</li>
+  <li><b>navbar-expand-lg</b>, the navbar expands horizontally on large screens</li>
+  <li><b>navbar-nav</b>, wrapper for the menu items list</li>
+  <li><b>nav-item</b>, one menu item</li>
+  <li><b>nav-link</b>, the actual clickable link</li>
+  <li><b>active</b>, marks the current page</li>
+  <li><b>disabled</b>, disables the link visually and functionally</li>
+</ul>
+
+
+<h3>2. Changing the Navbar Color Using Bootstrap Classes</h3>
+
+<p>
+Instead of using <b>bg-dark</b>, we can change the background color using other Bootstrap background classes.
+</p>
+
+<nav class="navbar navbar-light bg-light navbar-expand-lg">
+  <ul class="navbar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Active</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+
+  </ul>
+</nav><br>
+
+<pre><code>&lt;nav class="navbar navbar-light bg-light navbar-expand-lg"&gt;
+</code></pre>
+
+<p>
+This makes the navbar:
+</p>
+
+<ul>
+  <li>Light background</li>
+  <li>Dark text</li>
+</ul>
+
+<p>
+Another example:
+</p>
+
+<nav class="navbar navbar-light bg-primary navbar-expand-lg">
+  <ul class="navbar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Active</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+
+  </ul>
+</nav><br>
+
+<pre><code>&lt;nav class="navbar navbar-light bg-primary navbar-expand-lg"&gt;
+</code></pre>
+
+<ul>
+  <li>Primary blue background</li>
+  <li>Light text on the navbar</li>
+</ul>
+
+
+<h3>3. Changing the Navbar Color Using Custom CSS</h3>
+
+<p>
+We are not limited to Bootstrap colors only.  
+We can also create our own custom background color using a CSS class.
+</p>
+
+<nav class="navbar navbar-light my-nav navbar-expand-lg">
+  <ul class="navbar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Active</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+
+  </ul>
+</nav><br>
+
+<pre><code>&lt;nav class="navbar navbar-light navbar-expand-lg my-nav"&gt;
+</code></pre>
+
+<p>
+And define the color using CSS:
+</p>
+
+<pre><code>
+&lt;style&gt;
+  .my-nav {
+    background-color: rgb(248, 25, 237);
+  }
+&lt;/style&gt;
+</code></pre>
+
+<p>
+This method allows you to:
+</p>
+
+<ul>
+  <li>Use any custom color you want</li>
+  <li>Match your project branding</li>
+  <li>Override Bootstrap default colors safely</li>
+</ul>
+
+
+<h3>4. Important Rule About Navbar Colors</h3>
+
+<ul>
+  <li><b>navbar-dark</b> is used with dark backgrounds</li>
+  <li><b>navbar-light</b> is used with light backgrounds</li>
+  <li><b>bg-*</b> controls the background color</li>
+  <li>Custom colors can be applied using your own CSS class</li>
+</ul>
+
+
+
+<h3>5. Summary</h3>
+
+<ul>
+  <li>Navbar items are added using <b>ul → li → a</b></li>
+  <li><b>active</b> highlights the current page</li>
+  <li><b>disabled</b> blocks a link</li>
+  <li>Navbar colors can be changed using:
+    <ul>
+      <li>Bootstrap background classes</li>
+      <li>Custom CSS classes</li>
+    </ul>
+  </li>
+</ul>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- SUMMARY -->
+<!-- ========================= -->
+
+<section>
+<h2>Summary</h2>
+
+<ul>
+  <li>Bootstrap is a ready-made design framework</li>
+  <li>We add it using a CDN link</li>
+  <li>Bootstrap works using predefined classes</li>
+  <li>No custom CSS is required for basic styling</li>
+</ul>
+
+</section>
+
+</body>
+</html>

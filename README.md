@@ -99,6 +99,96 @@ Each lesson includes learning materials and matching cheat sheets where relevant
 
 ---
 
+## Lesson 5 – CSS Layout and Positioning
+
+### Files
+- Lesson 5 - position.html  
+- Lesson 5 - float.html  
+- Lesson 5 - layout.html  
+- Lesson 5 - responsive intro.html  
+
+### Topics Covered
+
+### CSS Positioning
+- `position: static`  
+- `position: relative`  
+- `position: absolute`  
+- `position: fixed`  
+- How positioning affects element location on the page  
+- Using `top`, `left`, `right`, `bottom`  
+
+### Float Layout
+- Using `float` for layout  
+- Differences between `float: left` and `float: right`  
+- Clearing floats with `clear`  
+- Classic multi-column layouts using float  
+- Limitations of float-based design  
+
+### Basic Layout Techniques
+- Building rows and columns with pure CSS  
+- Controlling width and height of elements  
+- Using percentages vs fixed sizes  
+- Understanding box alignment  
+
+### Introduction to Responsive Thinking
+- What responsive design means  
+- Why fixed layouts fail on mobile  
+- First exposure to adapting layouts for different screen sizes  
+
+
+---
+
+## Lesson 6 – Responsive Design and Bootstrap
+
+### Files
+- Lesson 6 - media query.html  
+- Lesson 6 - overflow.html  
+- Lesson 6 - Navbar.html  
+- Lesson 6 - Bootstrap.html  
+- Lesson 6 - Bootstrap Colors.html  
+
+### Topics Covered
+
+### Media Queries
+- What responsive design means  
+- Using `@media` rules  
+- `max-width` and `min-width`  
+- Breaking layouts for mobile, tablet, and desktop  
+- Hiding and changing elements based on screen size  
+
+### Overflow
+- `overflow: hidden`  
+- `overflow: auto`  
+- `overflow: scroll`  
+- How overflowing content behaves inside boxes  
+- Visual examples of content clipping and scrolling  
+
+### Bootstrap Introduction
+- What Bootstrap is and why it is used  
+- Using Bootstrap CDN  
+- Required viewport meta tag  
+- Containers vs container-fluid  
+- Bootstrap grid system basics  
+- Rows and columns  
+- `col-*` responsive sizing  
+
+### Bootstrap Navbar
+- Navbar structure  
+- `navbar`, `navbar-nav`, `nav-item`, `nav-link`  
+- Active and disabled links  
+- Responsive hamburger menu  
+- `navbar-expand-*` breakpoints  
+- Navbar toggler and collapse behavior  
+- Aligning buttons inside the navbar  
+
+### Bootstrap Colors
+- Background color utilities  
+- `bg-primary`, `bg-success`, `bg-danger`, `bg-warning`, etc.  
+- Subtle background colors  
+- Using colors for layout visualization  
+- Working with padding and spacing utilities  
+
+
 ## How to Use
 
 1. Open the live website link  

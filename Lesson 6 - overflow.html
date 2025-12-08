@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Overflow Comparison</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background-color: #f8f9fa;
+  line-height: 1.6;
+}
+
+/* section layout like previous lessons */
+section {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+}
+
+/* shared styles for all containers */
+.container {
+  width: 300px;
+  border: 2px solid #0077cc;
+  white-space: nowrap;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* overflow variations with different colors */
+.visible { 
+  overflow: visible; 
+  background-color: #e3f2fd;
+}
+
+.hidden { 
+  overflow: hidden; 
+  background-color: #ffe0e0;
+}
+
+.scroll { 
+  overflow: scroll; 
+  background-color: #e0f7e9;
+}
+
+.auto { 
+  overflow: auto; 
+  background-color: #fff3cd;
+}
+
+/* boxes inside each container */
+.box {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  background-color: #0099cc;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  line-height: 100px;
+  margin-right: 10px;
+  border-radius: 6px;
+}
+
+/* explanation text */
+.explain {
+  background-color: #f7f7f7;
+  border-left: 5px solid #0077cc;
+  padding: 10px;
+  margin-top: 10px;
+}
+</style>
+
+</head>
+<body>
+
+<h1>CSS Overflow Comparison</h1>
+
+<section>
+<h2>General Explanation</h2>
+<p>
+Each container below is only <b>300px wide</b>, but the three boxes inside total more than <b>600px</b> in width.  
+This allows us to clearly see how each overflow value behaves.
+</p>
+</section>
+
+<section>
+<h2>How the Overflow Example Is Built</h2>
+
+<p>
+Before we look at the different overflow behaviors, we first need to understand the basic structure that is used in all examples.
+</p>
+
+<h3>HTML Structure</h3>
+
+<pre><code>
+&lt;div class="container"&gt; 
+  &lt;div class="box"&gt;Box 1&lt;/div&gt;
+  &lt;div class="box"&gt;Box 2&lt;/div&gt;
+  &lt;div class="box"&gt;Box 3&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>
+The container holds three boxes.  
+The boxes are placed next to each other in one row.
+</p>
+
+<h3>Basic CSS Used</h3>
+
+<pre><code>
+.container {
+  width: 300px;
+}
+
+.box {
+  display: inline-block;
+  width: 200px;
+}
+</code></pre>
+
+<p>
+The container width is only <b>300px</b>, but each box is <b>200px wide</b>.  
+Three boxes together are wider than the container, so overflow is guaranteed to happen.  
+This allows us to clearly demonstrate how each overflow mode behaves.
+</p>
+
+</section>
+
+<!-- ========================= -->
+<!-- 1. overflow: visible -->
+<!-- ========================= -->
+
+<section>
+<h2>1. overflow: visible (default)</h2>
+
+<div class="container visible">
+  <div class="box">Box 1</div>
+  <div class="box">Box 2</div>
+  <div class="box">Box 3</div>
+</div>
+
+<div class="explain">
+<b>Explanation:</b><br>
+This is the <b>default behavior</b> of overflow.  
+The content is allowed to go outside the container.  
+Nothing is hidden and no scroll bar is added.  
+The boxes overflow outside the blue border.
+</div>
+</section>
+
+<!-- ========================= -->
+<!-- 2. overflow: hidden -->
+<!-- ========================= -->
+
+<section>
+<h2>2. overflow: hidden</h2>
+
+<div class="container hidden">
+  <div class="box">Box 1</div>
+  <div class="box">Box 2</div>
+  <div class="box">Box 3</div>
+</div>
+
+<div class="explain">
+<b>Explanation:</b><br>
+Any part of the content that goes outside the container is <b>cut off</b>.  
+There is <b>no scroll bar</b>.  
+The user cannot access the hidden content.
+</div>
+</section>
+
+<!-- ========================= -->
+<!-- 3. overflow: scroll -->
+<!-- ========================= -->
+
+<section>
+<h2>3. overflow: scroll</h2>
+
+<div class="container scroll">
+  <div class="box">Box 1</div>
+  <div class="box">Box 2</div>
+  <div class="box">Box 3</div>
+</div>
+
+<div class="explain">
+<b>Explanation:</b><br>
+Scroll bars are <b>always visible</b>, even if they are not needed.  
+The user can scroll horizontally to see the hidden boxes.
+</div>
+</section>
+
+<!-- ========================= -->
+<!-- 4. overflow: auto -->
+<!-- ========================= -->
+
+<section>
+<h2>4. overflow: auto</h2>
+
+<div class="container auto">
+  <div class="box">Box 1</div>
+  <div class="box">Box 2</div>
+  <div class="box">Box 3</div>
+</div>
+
+<div class="explain">
+<b>Explanation:</b><br>
+Scroll bars appear <b>only when needed</b>.  
+If the content fits, there will be no scroll bar.  
+If it overflows, scrolling becomes available automatically.
+</div>
+</section>
+
+<section>
+<h2>Summary</h2>
+<ul>
+  <li><b>visible</b> lets content escape outside the container</li>
+  <li><b>hidden</b> cuts off overflowing content completely</li>
+  <li><b>scroll</b> always shows scroll bars</li>
+  <li><b>auto</b> shows scroll bars only when needed</li>
+</ul>
+</section>
+
+</body>
+</html>

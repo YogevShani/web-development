@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Understanding Media Queries</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+        }
+
+        pre, code {
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            padding: 8px;
+            display: block;
+            white-space: pre;
+            font-family: Consolas, monospace;
+        }
+
+        /* ===== BASIC LAYOUT FOR DEMO ===== */
+
+        .demo-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo-nav li {
+            width: 25%;
+            float: left;
+        }
+
+        .demo-nav a {
+            display: block;
+            padding: 10px;
+            text-align: center;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+        }
+
+        .demo-nav a:hover {
+            background-color: #1abc9c;
+        }
+
+        .cakes {
+            clear: both;
+            background-color: yellowgreen;
+            height: 200px;
+            margin-top: 20px;
+            text-align: center;
+            line-height: 200px;
+            font-weight: bold;
+        }
+
+        span {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+            color: darkred;
+            background-color: yellow;
+        }
+
+        /* ===== MEDIA QUERIES FROM SLIDE 22 ===== */
+
+        @media screen and (max-width: 1000px) {
+            .demo-nav li {
+                width: 50%;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .demo-nav li {
+                width: 100%;
+            }
+
+            span {
+                display: none;
+            }
+
+            .cakes {
+                height: 100px;
+                line-height: 100px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Media Queries, Responsive Design in Action</h1>
+
+<section>
+<h2>1. What Are Media Queries</h2>
+
+<p>
+Media Queries allow us to change the design of the page according to the screen width.  
+This is what makes websites responsive.
+</p>
+
+<p>
+Instead of one fixed design for all devices, the layout adapts automatically.
+</p>
+</section>
+
+<section>
+<h2>2. Basic Media Query Structure</h2>
+
+<pre><code>
+@media screen and (max-width: 1000px) {
+    /* Styles for tablets */
+}
+
+@media screen and (max-width: 800px) {
+    /* Styles for mobile phones */
+}
+</code></pre>
+
+<p>
+max width 1000 pixels activates the rules for tablets<br>  
+max width 800 pixels activates the rules for mobile screens
+</p>
+</section>
+
+<section>
+<h2>3. Media Query Example</h2>
+
+<pre><code>
+@media screen and (max-width: 1000px) {
+    li {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    li {
+        width: 100%;
+    }
+
+    span {
+        display: none;
+    }
+
+    .cakes {
+        height: 100px;
+    }
+}
+</code></pre>
+
+</section>
+
+<section>
+<h2>4. Live Responsive Example</h2>
+
+<p>
+Resize your browser window and watch how the menu changes.
+</p>
+
+<span>This text disappears on small screens</span>
+
+<nav class="demo-nav">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Products</a></li>
+    </ul>
+</nav>
+
+<div class="cakes">This block changes height</div>
+
+</section>
+
+<section>
+<h2>5. What Happens at Each Screen Size</h2>
+
+<ul>
+    <li>Above 1000px, the menu shows 4 items in one row</li>
+    <li>Below 1000px, the menu changes to 2 items per row</li>
+    <li>Below 800px, the menu changes to 1 item per row</li>
+    <li>The span text disappears</li>
+    <li>The cakes block becomes shorter</li>
+</ul>
+
+</section>
+
+<section>
+<h2>6. Summary, Media Queries</h2>
+
+<ul>
+    <li>Media Queries change layout based on screen size</li>
+    <li>They control width, height, and visibility</li>
+    <li>They are the core tool for responsive web design</li>
+    <li>They work automatically, no JavaScript needed</li>
+</ul>
+
+</section>
+
+</body>
+</html>
