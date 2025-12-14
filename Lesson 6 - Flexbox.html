@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flexbox Introduction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background-color: #f8f9fa;
+  line-height: 1.6;
+}
+
+section {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+}
+
+.code-block {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 5px solid #0077cc;
+  overflow-x: auto;
+}
+
+/* base container and box styles from your screenshot */
+.container {
+  width: 60%;
+  margin: auto;
+  background-color: red;
+}
+
+.box {  
+  box-sizing: border-box;
+  border-style: solid;
+  font-size: 30px;
+}
+
+/* visual illustration box */
+.preview {
+  margin-top: 20px;
+  border: 3px solid #0077cc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #e9f5ff;
+}
+</style>
+
+</head>
+<body>
+
+<h1>CSS Flexbox Layout Module</h1>
+
+<section>
+  <h2>Topic: What is Flexbox?</h2>
+  <p>
+    Flexbox is a modern CSS layout system that gives us full control over the direction, alignment, spacing, 
+    and distribution of elements, without using float or tricky positioning.  
+  </p>
+  <p>
+    Before activating Flexbox, we start with a simple block layout like the example below.
+  </p>
+</section>
+
+<section>
+  <h2>Base HTML Structure</h2>
+
+  <div class="code-block">
+<pre><code>&lt;div class="container"&gt;
+    &lt;div class="box"&gt;This is block1&lt;/div&gt;
+    &lt;div class="box"&gt;This is block2&lt;/div&gt;
+    &lt;div class="box"&gt;This is block3&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+  <p>
+    This is our starting point.  
+    All three blocks appear one under the other because they are normal block elements.
+  </p>
+</section>
+
+<section>
+  <h2>Base CSS</h2>
+
+  <div class="code-block">
+<pre><code>.container{
+    width:60%;
+    margin: auto;
+    background-color:red;
+}
+
+.box{
+    box-sizing:border-box;
+    border-style:solid;
+    font-size:30px;
+}
+</code></pre>
+  </div>
+
+  <p>
+    The container is centered and each box gets a border and large text.  
+    This will help us clearly see changes once Flexbox is added.
+  </p>
+</section>
+
+<section>
+  <h2>Visual Illustration</h2>
+
+  <div class="preview">
+    <div class="container">
+        <div class="box">This is block1</div>
+        <div class="box">This is block2</div>
+        <div class="box">This is block3</div>
+    </div>
+  </div>
+
+  <p>
+    Right now, everything stacks vertically, which is the default behavior before Flexbox is activated.
+  </p>
+</section>
+
+<section>
+  <h2>Step 1: Activating Flexbox with display:flex</h2>
+
+  <p>
+    To turn the container into a Flexbox container, we simply add 
+    <b>display:flex</b> to the existing <b>.container</b> class.  
+    The moment we do this, the three blocks stop stacking vertically and move into a single row.
+  </p>
+
+  <h3>Updated HTML</h3>
+
+  <div class="code-block">
+<pre><code>&lt;div class="container"&gt;
+    &lt;div class="box"&gt;This is block1&lt;/div&gt;
+    &lt;div class="box"&gt;This is block2&lt;/div&gt;
+    &lt;div class="box"&gt;This is block3&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+  <h3>Updated CSS (only the change)</h3>
+
+  <div class="code-block">
+<pre><code>.container{
+    width:60%;
+    margin:auto;
+    background-color:red;
+    <span style="background-color:yellow; color:black;">display:flex;        /* Flexbox is now active */</span>
+}
+</code></pre>
+  </div>
+
+  <p>
+    This single property transforms the layout:  
+    all boxes now align next to each other in a horizontal row since 
+    <b>flex-direction</b> defaults to <b>row</b>.
+  </p>
+</section>
+
+<section>
+  <h2>Visual Illustration: display:flex Enabled</h2>
+
+  <div class="preview">
+    <div class="container" style="display:flex;">
+        <div class="box">This is block1</div>
+        <div class="box">This is block2</div>
+        <div class="box">This is block3</div>
+    </div>
+  </div>
+
+  <p>
+    As soon as Flexbox is enabled, the items flow horizontally instead of stacking vertically.  
+    This is the core behavior of Flexbox.
+  </p>
+</section>
+
+<section>
+  <h2>Step 2: Changing Direction with flex-direction: column</h2>
+
+  <p>
+    By default, Flexbox arranges items in a horizontal row.  
+    To stack the items vertically using Flexbox, we change the direction to 
+    <b>column</b>.  
+    This gives us full control over vertical layouts without removing Flexbox behavior.
+  </p>
+
+  <h3>Updated CSS (only the change)</h3>
+
+  <div class="code-block">
+<pre><code>.container{
+    width:60%;
+    margin:auto;
+    background-color:red;
+    display:flex;
+    <span style="background-color:yellow; color:black;">flex-direction:column;    /* Items stack vertically */</span>
+}
+</code></pre>
+  </div>
+
+  <p>
+    Now the Flexbox container behaves like a vertical layout engine, 
+    stacking all three items from top to bottom.
+  </p>
+</section>
+
+<section>
+  <h2>HTML Structure (unchanged)</h2>
+
+  <div class="code-block">
+<pre><code>&lt;div class="container"&gt;
+    &lt;div class="box"&gt;This is block1&lt;/div&gt;
+    &lt;div class="box"&gt;This is block2&lt;/div&gt;
+    &lt;div class="box"&gt;This is block3&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+</section>
+
+<section>
+  <h2>Visual Illustration: flex-direction column</h2>
+
+  <div class="preview">
+    <div class="container" style="display:flex; flex-direction:column;">
+        <div class="box">This is block1</div>
+        <div class="box">This is block2</div>
+        <div class="box">This is block3</div>
+    </div>
+  </div>
+
+  <p>
+    Even though Flexbox normally arranges items in a row,  
+    <b>flex-direction: column</b> switches it to a vertical layout 
+    while keeping all Flexbox alignment features available.
+  </p>
+</section>
+
+<hr>
+<section>
+  <h2>Flex Direction: row-reverse</h2>
+
+  <p>
+    The property <b>flex-direction: row-reverse</b> flips the order of the flex items 
+    horizontally.  
+    The layout direction becomes reversed, meaning the last item appears first on the <b>right</b> side.
+  </p>
+
+  <h3>Container CSS</h3>
+
+  <div class="code-block">
+<pre><code>.container{
+    width:60%;
+    margin:auto;
+    background-color:red;
+
+    <span style="background-color:yellow; color:black;">display:flex;</span>
+    <span style="background-color:yellow; color:black;">flex-direction: row-reverse;</span>
+}
+</code></pre>
+  </div>
+
+  <h3>Box CSS</h3>
+
+  <div class="code-block">
+<pre><code>.box{
+    border:1px solid black;
+    font-size:20px;
+    padding:10px;
+    box-sizing:border-box;
+}
+</code></pre>
+  </div>
+
+  <h3>Visual Illustration with flex-direction:row-reverse</h3>
+
+  <div class="preview" style="border:3px solid #005f99;">
+    <div class="container" 
+         style="width:60%; margin:auto; background-color:red; display:flex; flex-direction:row-reverse;">
+
+        <div class="box">Block 1</div>
+        <div class="box">Block 2</div>
+        <div class="box">Block 3</div>
+
+    </div>
+  </div>
+
+    <p>
+    Even though the HTML order is Block 1 → Block 2 → Block 3,  
+    the visual layout becomes Block 3 → Block 2 → Block 1.  
+    This only affects the visual order, not the source code order.
+  </p>
+
+    <h3>Visual Illustration with flex-direction:row-revers + justify-content: left</h3>
+
+  <div class="preview" style="border:3px solid #005f99;">
+    <div class="container" 
+         style="width:60%; margin:auto; background-color:red; display:flex; flex-direction:row-reverse;justify-content: left;">
+
+        <div class="box">Block 1</div>
+        <div class="box">Block 2</div>
+        <div class="box">Block 3</div>
+
+    </div>
+  </div>
+
+
+</section>
+
+
+<section>
+  <h2>Step 3: Allowing Items to Move to New Lines with flex-wrap: wrap</h2>
+
+  <p>
+    By default, Flexbox keeps all items on one line, even if they overflow the container.  
+    When we want items to move to the next row (responsive layout), we use 
+    <b>flex-wrap: wrap</b>.  
+    This tells Flexbox that items are allowed to break into additional lines.
+  </p>
+
+  <h3>Updated CSS (only the change)</h3>
+
+  <div class="code-block">
+<pre><code>.container{
+    width:60%;
+    margin:auto;
+    background-color:red;
+    display:flex;
+    <span style="background-color:yellow; color:black;">flex-wrap:wrap;      /* Items can move to new rows */</span>
+}
+</code></pre>
+  </div>
+
+  <p>
+    As soon as wrapping is enabled, items will automatically jump to the next line 
+    when they run out of horizontal space.  
+    This is one of the most important tools for building responsive layouts.
+  </p>
+</section>
+
+<section>
+  <h2>HTML Structure (unchanged)</h2>
+
+  <div class="code-block">
+<pre><code>&lt;div class="container"&gt;
+    &lt;div class="box"&gt;This is block1&lt;/div&gt;
+    &lt;div class="box"&gt;This is block2&lt;/div&gt;
+    &lt;div class="box"&gt;This is block3&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+</section>
+
+<section>
+  <h2>Visual Illustration: flex-wrap: wrap</h2>
+
+  <p>
+    For demonstration, each box will be given a fixed width of 500px to force wrapping.
+  </p>
+
+  <div class="preview">
+    <div class="container" style="display:flex; flex-wrap:wrap;">
+        <div class="box" style="width:500px;">This is block1</div>
+        <div class="box" style="width:500px;">This is block2</div>
+        <div class="box" style="width:500px;">This is block3</div>
+    </div>
+  </div>
+
+  <p>
+    Once the items are wider than the container, Flexbox places two items on the first row 
+    and automatically moves the third item to the next row.
+  </p>
+</section>
+
+<section>
+  <h2>Step 4: Horizontal Alignment with justify-content: center</h2>
+
+  <p>
+    The property <b>justify-content</b> controls how items are positioned 
+    horizontally inside a Flexbox container.  
+    Setting it to <b>center</b> moves all items to the middle of the row.
+  </p>
+
+  <h3>Updated CSS (only the change)</h3>
+
+  <div class="code-block">
+<pre><code>.container{
+    width:60%;
+    margin:auto;
+    background-color:red;
+    display:flex;
+    <span style="background-color:yellow; color:black;">justify-content:center;    /* Items are centered horizontally */</span>
+}
+</code></pre>
+  </div>
+
+  <p>
+    All items now sit together in the center of the line.
+  </p>
+</section>
+
+<section>
+  <h2>Visual Illustration: justify-content center</h2>
+
+  <div class="preview">
+    <div class="container" style="display:flex; justify-content:center;">
+        <div class="box" style="width:120px;">Block1</div>
+        <div class="box" style="width:120px;">Block2</div>
+        <div class="box" style="width:120px;">Block3</div>
+    </div>
+  </div>
+
+  <p>
+    All boxes are grouped together in the center of the row.
+  </p>
+</section>
+
+<section>
+  <h2>Step 5: Spacing with justify-content: space-between</h2>
+
+  <p>
+    <b>space-between</b> spreads items evenly across the row.  
+    The first item sticks to the left, the last item sticks to the right,  
+    and all remaining space is divided equally between the items.
+  </p>
+
+  <h3>Updated CSS (only the change)</h3>
+
+  <div class="code-block">
+<pre><code>.container{
+    width:60%;
+    margin:auto;
+    background-color:red;
+    display:flex;
+    <span style="background-color:yellow; color:black;">justify-content:space-between;  /* Items spread to edges */</span>
+}
+</code></pre>
+  </div>
+
+  <p>
+    This is commonly used in navigation bars and layouts that need equal distribution.
+  </p>
+</section>
+
+<section>
+  <h2>Visual Illustration: space-between</h2>
+
+  <div class="preview">
+    <div class="container" style="display:flex; justify-content:space-between;">
+        <div class="box" style="width:120px;">Block1</div>
+        <div class="box" style="width:120px;">Block2</div>
+        <div class="box" style="width:120px;">Block3</div>
+    </div>
+  </div>
+
+  <p>
+    The first item aligns left, the last aligns right, and the middle item sits exactly in the center.
+  </p>
+</section>
+
+<section>
+  <h2>Step 6: Spacing with justify-content: space-around</h2>
+
+  <p>
+    <b>space-around</b> gives equal space around each item.  
+    This means the edges of the container also receive half-sized spacing,  
+    creating a softer and more balanced layout.
+  </p>
+
+  <h3>Updated CSS (only the change)</h3>
+
+  <div class="code-block">
+<pre><code>.container{
+    width:60%;
+    margin:auto;
+    background-color:red;
+    display:flex;
+    <span style="background-color:yellow; color:black;">justify-content:space-around;   /* Equal space around items */</span>
+}
+</code></pre>
+  </div>
+
+  <p>
+    This creates even spacing that feels more breathable compared to space-between.
+  </p>
+</section>
+
+<section>
+  <h2>Visual Illustration: space-around</h2>
+
+  <div class="preview">
+    <div class="container" style="display:flex; justify-content:space-around;">
+        <div class="box" style="width:120px;">Block1</div>
+        <div class="box" style="width:120px;">Block2</div>
+        <div class="box" style="width:120px;">Block3</div>
+    </div>
+  </div>
+
+  <p>
+    The spacing on both sides of each item is the same, including the outer edges.
+  </p>
+</section>
+
+
+<section>
+  <h2>Align Items (Cross-Axis Alignment)</h2>
+
+  <p>
+    The <b>align-items</b> property controls how Flexbox items are aligned 
+    along the <b>cross axis</b>.  
+    In a horizontal flex container (the default), the cross axis is <b>vertical</b>.  
+    Each value changes how items are positioned inside the container's height.
+  </p>
+
+  <p>
+    Below are all available values of <b>align-items</b>, each illustrated visually.
+  </p>
+
+  <div class="code-block">
+<pre><code>align-items: flex-start;   /* Items at the top */
+align-items: flex-end;     /* Items at the bottom */
+align-items: center;       /* Items centered vertically */
+align-items: stretch;      /* Items stretch to fill container (default) */
+align-items: baseline;     /* Items align according to text baseline */
+</code></pre>
+  </div>
+</section>
+
+<section>
+  <h2>align-items: flex-start</h2>
+
+  <p>Items align at the <b>top</b> of the container (start of the cross-axis).</p>
+
+  <div class="code-block">
+<pre><code>.container{
+    display:flex;
+    <span style="background-color:yellow; color:black;">align-items:flex-start;</span>
+    height:200px;
+}
+</code></pre>
+  </div>
+
+  <div class="preview" style="border:3px solid #005f99;">
+    <div class="container" style="display:flex; align-items:flex-start; height:200px; background:red;">
+      <div class="box" style="width:100px; height:50px;">Block1</div>
+      <div class="box" style="width:100px; height:80px;">Block2</div>
+      <div class="box" style="width:100px; height:40px;">Block3</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>align-items: flex-end</h2>
+
+  <p>Items align at the <b>bottom</b> of the container.</p>
+
+  <div class="code-block">
+<pre><code>.container{
+    display:flex;
+    <span style="background-color:yellow; color:black;">align-items:flex-end;</span>
+    height:200px;
+}
+</code></pre>
+  </div>
+
+  <div class="preview" style="border:3px solid #005f99;">
+    <div class="container" style="display:flex; align-items:flex-end; height:200px; background:red;">
+      <div class="box" style="width:100px; height:50px;">Block1</div>
+      <div class="box" style="width:100px; height:80px;">Block2</div>
+      <div class="box" style="width:100px; height:40px;">Block3</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>align-items: center</h2>
+
+  <p>Items are vertically <b>centered</b> within the container.</p>
+
+  <div class="code-block">
+<pre><code>.container{
+    display:flex;
+    <span style="background-color:yellow; color:black;">align-items:center;</span>
+    height:200px;
+}
+</code></pre>
+  </div>
+
+  <div class="preview" style="border:3px solid #005f99;">
+    <div class="container" style="display:flex; align-items:center; height:200px; background:red;">
+      <div class="box" style="width:100px; height:50px;">Block1</div>
+      <div class="box" style="width:100px; height:80px;">Block2</div>
+      <div class="box" style="width:100px; height:40px;">Block3</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>align-items: stretch (default)</h2>
+
+  <p>
+    Items stretch to fill the container’s height, 
+    <b>as long as they do not have a fixed height</b>.
+  </p>
+
+  <div class="code-block">
+<pre><code>.container{
+    display:flex;
+    <span style="background-color:yellow; color:black;">align-items:stretch;</span>
+    height:200px;
+}
+</code></pre>
+  </div>
+
+  <div class="preview" style="border:3px solid #005f99;">
+    <div class="container" style="display:flex; align-items:stretch; height:200px; background:red;">
+      <div class="box" style="width:100px;">Block1</div>
+      <div class="box" style="width:100px;">Block2</div>
+      <div class="box" style="width:100px;">Block3</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>align-items: baseline</h2>
+
+  <p>Items align according to their <b>text baselines</b>.</p>
+
+  <div class="code-block">
+<pre><code>.container{
+    display:flex;
+    <span style="background-color:yellow; color:black;">align-items:baseline;</span>
+    height:200px;
+}
+</code></pre>
+  </div>
+
+  <div class="preview" style="border:3px solid #005f99; position:relative;">
+
+    <!-- The baseline line -->
+    <div style="
+        position:absolute;
+        top:58px;        /* baseline for 32px font-size */
+        left:0;
+        width:100%;
+        height:2px;
+        background:green;">
+    </div>
+
+    <!-- Flex container -->
+    <div class="container" 
+         style="display:flex; align-items:baseline; height:200px; background:red;">
+         
+        <div class="box" style="font-size:16px; border:1px solid black; margin-right:10px;">
+            Block1
+        </div>
+
+        <div class="box" style="font-size:32px; border:1px solid black; margin-right:10px;">
+            Block2
+        </div>
+
+        <div class="box" style="font-size:20px; border:1px solid black;">
+            Block3
+        </div>
+    </div>
+
+</div>
+
+</section>
+
+<hr>
+<section>
+  <h2>Flex Grow (flex: 1)</h2>
+
+  <p>
+    The property <b>flex: 1</b> tells a flex item to <b>grow and take all remaining 
+    free space</b> inside the container.  
+    If multiple items have <b>flex:1</b>, they share the space equally.
+  </p>
+
+  <h3>Container CSS</h3>
+
+  <div class="code-block">
+<pre><code>.container{
+    width:60%;
+    margin:auto;
+    background-color:red;
+
+    <span style="background-color:yellow; color:black;">display:flex;</span>
+}
+</code></pre>
+  </div>
+
+  <h3>Box CSS</h3>
+
+  <div class="code-block">
+<pre><code>.box{
+    border:1px solid black;
+    box-sizing:border-box;
+    padding:10px;
+}
+
+.box-grow{
+    <span style="background-color:yellow; color:black;">flex:1;   /* grows to fill leftover space */</span>
+}
+</code></pre>
+  </div>
+
+
+  <h3>Visual Illustration</h3>
+
+  <div class="preview" style="border:3px solid #005f99;">
+    <div class="container" 
+         style="width:60%; margin:auto; background-color:red; display:flex;">
+
+        <div class="box">Block 1</div>
+        <div class="box box-grow" style="flex:1;">Block 2 (flex:1)</div>
+        <div class="box">Block 3</div>
+
+    </div>
+  </div>
+
+  <p>
+    In this example, Block 2 expands to take all remaining space.  
+    Block 1 and Block 3 keep their natural width, while Block 2 grows.
+  </p>
+</section>
+
+<hr>
+<section>
+  <h2>Gap Between Flex Items (gap)</h2>
+
+  <p>
+    The property <b>gap</b> creates spacing <b>between flex items only</b>.  
+    It does not add space before the first item or after the last item.  
+    It is a clean alternative to using margins on each item.
+  </p>
+
+  <h3>Container CSS</h3>
+
+  <div class="code-block">
+<pre><code>.container{
+    width:60%;
+    margin:auto;
+    background-color:red;
+
+    <span style="background-color:yellow; color:black;">display:flex;</span>
+    <span style="background-color:yellow; color:black;">gap: 20px;   /* space between items */</span>
+}
+</code></pre>
+  </div>
+
+  <h3>Box CSS</h3>
+
+  <div class="code-block">
+<pre><code>.box{
+    border:1px solid black;
+    padding:10px;
+    box-sizing:border-box;
+}
+</code></pre>
+  </div>
+
+  <h3>Visual Illustration</h3>
+
+  <div class="preview" style="border:3px solid #005f99;">
+    <div class="container" 
+         style="width:60 percent; margin:auto; background-color:red; display:flex; gap:20px;">
+
+        <div class="box">Block 1</div>
+        <div class="box">Block 2</div>
+        <div class="box">Block 3</div>
+
+    </div>
+  </div>
+
+  <p>
+    The space created by <b>gap</b> appears only between the items.  
+    Block 1, Block 2, and Block 3 are separated evenly, without adding extra spacing on the edges.
+  </p>
+</section>
+
+
+</body>
+</html>
