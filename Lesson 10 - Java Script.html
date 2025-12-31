@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            background: #e0fff1;
+            padding: 15px;
+            border-left: 8px solid #14b8a6;
+        }
+
+        h2 {
+            background: #e0fff1;
+            padding: 10px;
+            border-left: 6px solid #14b8a6;
+            margin-top: 50px;
+        }
+
+        .example-box {
+            border: 2px solid #14b8a6;
+            padding: 15px;
+            margin-bottom: 30px;
+            background: #f3fffb;
+        }
+
+        code {
+            display: block;
+            background: #f2f2f2;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .toc {
+            margin-bottom: 40px;
+            background: #f7fffb;
+            padding: 20px;
+            border: 1px solid #b4e9db;
+        }
+
+        .toc a {
+            display: block;
+            margin-bottom: 6px;
+            color: #007b5e;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>JavaScript</h1>
+
+<div class="toc">
+    <h2>Table of Contents</h2>
+
+    <a href="#what">What is JavaScript</a>
+    <a href="#placement">Script Placement Guide</a>
+    <a href="#external">External JavaScript file</a>
+    <a href="#basic-example">First basic example</a>
+
+    <a href="#button-example">Running JavaScript with a Button</a>
+    <a href="#getelementbyid">Using getElementById</a>
+    <a href="#write-to-element">Writing to an HTML element</a>
+    <a href="#write-html">Writing HTML using JavaScript</a>
+
+    <a href="#variables">Variables</a>
+    <a href="#redeclaration">Redeclaring variables: let vs var</a>
+    <a href="#block-scope-let-var">Block scope: let vs var</a>
+    <a href="#hoisting">Hoisting: var vs let</a>
+
+    <a href="#data-types">Variables and data types</a>
+    <a href="#comments">Comments</a>
+    <a href="#operators">Operators</a>
+    <a href="#conditions">Conditional statements</a>
+    <a href="#loops">Loops</a>
+
+    <a href="#user-interaction">User Interaction with prompt()</a>
+    <a href="#css-with-js">Using CSS with JavaScript</a>
+    <a href="#selectors">Selecting elements in JavaScript</a>
+
+    <a href="#functions-scope">Functions and Variable Scope</a>
+    <a href="#button-call-function">Calling a function from a button</a>
+</div>
+
+
+<!-- SECTION 1 -->
+<h2 id="what">What is JavaScript</h2>
+<div class="example-box">
+<p>
+JavaScript is a programming language that makes web pages interactive.  
+It can respond to clicks, show messages, validate forms, create animations, games, and more.
+</p>
+</div>
+
+<!-- SECTION 2 -->
+<h2 id="placement">Script Placement Guide</h2>
+<div class="example-box">
+
+<p>JavaScript code is written inside a special tag:</p>
+
+<code>
+&lt;script&gt;
+   // JavaScript code goes here
+&lt;/script&gt;
+</code>
+
+<p>We can place scripts:</p>
+
+<ul>
+<li>inside the head</li>
+<li>inside the body</li>
+<li>in several places in the page if needed</li>
+</ul>
+
+<p>
+Most developers place scripts at the end of the body so the page is fully loaded before the code runs.
+</p>
+
+<code>
+&lt;body&gt;
+   &lt;h1 id="title"&gt;Hello&lt;/h1&gt;
+
+   &lt;script&gt;
+      const h = document.getElementById("title");
+      h.innerText = "Loaded";
+   &lt;/script&gt;
+&lt;/body&gt;
+</code>
+
+
+
+</div>
+
+
+
+<!-- SECTION 3 -->
+<h2 id="external">External JavaScript file</h2>
+<div class="example-box">
+
+<p>
+If the same JavaScript code is needed in several pages, it is better to place it in an external file with a js extension.
+</p>
+
+<code>
+&lt;script src="file.js"&gt;&lt;/script&gt;
+</code>
+
+<p>
+This script file can then be reused in many HTML pages.
+</p>
+
+</div>
+
+<!-- SECTION 4 -->
+<h2 id="basic-example">First basic example</h2>
+<div class="example-box">
+
+<p>This example shows an alert message when the page loads:</p>
+
+<code>
+&lt;body&gt;
+
+&lt;h1&gt;My first JavaScript&lt;/h1&gt;
+
+&lt;script&gt;
+   alert("Hello class");
+&lt;/script&gt;
+
+&lt;/body&gt;
+</code>
+
+<div class="example-box">
+
+    <p>Here is an illustration of the alert code:</p>
+
+    <img src="img1.png" alt="JavaScript alert example" width="450">
+
+</div>
+
+</div>
+
+<h2 id="button-example">Running JavaScript with a Button</h2>
+
+<div class="example-box">
+
+<p>
+JavaScript does not have to run when the page loads.  
+We can run code when the user clicks a button using the
+<b>onclick</b> attribute.
+</p>
+
+<code>
+&lt;body&gt;
+
+&lt;h1&gt;This is a JavaScript example&lt;/h1&gt;
+&lt;p&gt;This is a JavaScript content&lt;/p&gt;
+
+&lt;button onclick="alert('Hello class')"&gt;
+    Click Me
+&lt;/button&gt;
+
+&lt;/body&gt;
+</code>
+
+<p>
+When the user clicks the button, the alert appears.
+This is our first example of making the page interactive.
+</p>
+
+</div>
+
+<h2 id="getelementbyid">Using getElementById</h2>
+
+<div class="example-box">
+
+<p>
+In this example we first find the button in the page using
+<b>getElementById</b>, then we attach a click event to it.
+</p>
+
+<code>
+&lt;h1&gt;This is a JavaScript example&lt;/h1&gt;
+&lt;p&gt;This is a JavaScript content&lt;/p&gt;
+
+&lt;button id="hello"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+   document.getElementById("hello").onclick = function () {
+       alert("Hello Class");
+   };
+&lt;/script&gt;
+</code>
+
+<p>
+getElementById finds the element, and onclick defines what happens when the button is clicked.
+</p>
+
+</div>
+
+<h2 id="write-to-element">Writing to an HTML element</h2>
+
+<div class="example-box">
+
+<p>
+In this example we change the content of a paragraph when the user clicks the button.
+</p>
+
+<code>
+&lt;h1&gt;This is a JavaScript Example&lt;/h1&gt;
+
+&lt;p id="myText"&gt;&lt;/p&gt;
+
+&lt;button id="hello"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+   document.getElementById("hello").onclick = function () {
+
+       document.getElementById("myText").innerHTML = "Hello";
+
+   };
+&lt;/script&gt;
+</code>
+
+<p>
+getElementById finds the paragraph, and innerHTML sets its content.
+</p>
+
+</div>
+
+<h2 id="write-html">Writing HTML using JavaScript</h2>
+
+<div class="example-box">
+
+<p>
+Here we use JavaScript to insert real HTML into the page, not just plain text.
+</p>
+
+<code>
+&lt;h1&gt;This is a JavaScript Example&lt;/h1&gt;
+
+&lt;p id="myText"&gt;&lt;/p&gt;
+
+&lt;button id="hello"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+   document.getElementById("hello").onclick = function () {
+
+       document.getElementById("myText").innerHTML =
+           "&lt;h3&gt;Hello&lt;/h3&gt;";
+
+   };
+&lt;/script&gt;
+</code>
+
+<p>
+Using innerHTML allows us to create new elements dynamically.
+</p>
+
+</div>
+
+<h2 id="variables">Variables</h2>
+
+<div class="example-box">
+
+<p>
+A variable is a container that stores a value.  
+JavaScript variables do not have a fixed type. The type depends on the value stored in them.
+</p>
+
+<p>
+There are four ways to declare a variable:
+</p>
+
+<table border="1" cellpadding="8">
+<thead>
+<tr>
+    <th>Keyword</th>
+    <th>Can reassign value?</th>
+    <th>Can redeclare?</th>
+    <th>Scope</th>
+    <th>Notes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+    <td><b>var</b></td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Function scope</td>
+    <td>Old syntax, can cause bugs</td>
+</tr>
+
+<tr>
+    <td><b>let</b></td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>Block scope</td>
+    <td>Recommended for variables that change</td>
+</tr>
+
+<tr>
+    <td><b>const</b></td>
+    <td>No</td>
+    <td>No</td>
+    <td>Block scope</td>
+    <td>Recommended for values that should not change</td>
+</tr>
+
+<tr>
+    <td><b>Implicit (no keyword)</b></td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Global</td>
+    <td><span style="color:red;">Not recommended</span></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Most modern code uses <b>let</b> and <b>const</b>, and avoids <b>var</b>.
+</p>
+
+</div>
+
+
+<h2 id="redeclaration">Redeclaring variables: let vs var</h2>
+
+<div class="example-box">
+
+<p>
+In JavaScript, variables behave differently when we try to declare them again.
+</p>
+
+<h3>Using let</h3>
+
+<code>
+let x;           // undefined  
+let x = "John Doe";   // SyntaxError, x is already declared
+</code>
+
+<p>
+Variables declared with <b>let</b> cannot be redeclared in the same scope.
+</p>
+
+<h3>Using var</h3>
+
+<code>
+var x;           // undefined
+var x = "John Doe";
+var x = 0;       // allowed
+var x;           // still allowed, value remains 0
+</code>
+
+<p>
+Variables declared with <b>var</b> can be redeclared.  
+This can cause bugs, which is why modern JavaScript prefers <b>let</b> and <b>const</b>.
+</p>
+
+</div>
+
+<h2 id="block-scope-let-var">Block scope: let vs var</h2>
+
+<div class="example-box">
+
+<p>
+A block is anything inside curly braces <b>{ }</b>.  
+Variables declared with <b>let</b> exist only inside that block.  
+Variables declared with <b>var</b> ignore the block.
+</p>
+
+<code>
+{
+    let x = 2;
+}
+// x can NOT be used here
+</code>
+
+<br>
+
+<code>
+{
+    var x = 2;
+}
+// x CAN be used here
+</code>
+
+<p>
+This shows the main difference:  
+<b>let</b> is block-scoped, while <b>var</b> is not.
+</p>
+
+</div>
+
+<h2 id="hoisting">Hoisting: var vs let</h2>
+
+<div class="example-box">
+
+<p>
+Hoisting means that variable declarations are moved to the top of their scope
+before the code is executed.
+</p>
+
+<h3>Hoisting with var</h3>
+
+<p>
+Variables declared with <b>var</b> are hoisted and initialized with <b>undefined</b>.
+This means you can use the variable before it is declared.
+</p>
+
+<code>
+carName = "Volvo";
+
+var carName;
+</code>
+
+<p>
+The code above works, although it is not recommended.
+</p>
+
+<hr>
+
+<h3>Hoisting with let</h3>
+
+<p>
+Variables declared with <b>let</b> are also hoisted, 
+but they stay in a <b>Temporal Dead Zone</b> until the declaration line is reached.
+</p>
+
+<p>
+Using the variable before it is declared will cause a <b>ReferenceError</b>:
+</p>
+
+<code>
+carName = "Volvo";
+
+let carName;   // Uncaught ReferenceError ReferenceError: Cannot access 'carName' before initialization
+</code>
+
+<p>
+So while both <b>var</b> and <b>let</b> are hoisted, 
+only <b>var</b> can be accessed before its declaration.
+</p>
+
+</div>
+
+<h2 id="data-types">Variables and data types</h2>
+
+<div class="example-box">
+
+<p>
+Variables in JavaScript can store different types of data such as:
+numbers, strings, booleans, arrays, and objects.
+</p>
+
+<code>
+// Number
+var length = 16;
+
+// String
+var lastName = "Johnson";
+
+// Array
+var cars = ["Saab", "Volvo", "BMW"];
+
+// Object
+var person = { firstName: "John", lastName: "Doe" };
+</code>
+
+<p>
+<b>Array Example in the page:</b>
+</p>
+
+<code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+   var cars = ["Saab", "Volvo", "BMW"];
+
+   document.getElementById("demo").innerHTML = cars[0];
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code>
+
+<p>
+In this example we use an array, and display the first value in it.
+</p>
+
+<p><b>Object Example in the page:</b></p>
+
+<code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;p id="demo1"&gt;&lt;/p&gt;
+&lt;p id="demo2"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+   var person = { firstName: "John", lastName: "Doe" };
+
+   // Dot notation
+   document.getElementById("demo1").innerHTML =
+       "First name: " + person.firstName;
+
+   // Bracket notation
+   document.getElementById("demo2").innerHTML =
+       "Last name: " + person["lastName"];
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code>
+
+<p>
+Dot notation is most common. Bracket notation is useful when the property name comes from a variable.
+</p>
+
+</div>
+
+
+<h2 id="comments">Comments</h2>
+
+<div class="example-box">
+
+<p>
+Comments are text inside the code that JavaScript ignores.
+We use them to explain what the code does.
+</p>
+
+<p>There are two kinds of comments:</p>
+
+<h3>Single-line comment</h3>
+
+<code>
+// this is a one line comment
+</code>
+
+<h3>Block comment</h3>
+
+<code>
+/*
+   this is
+   a block of
+   comments
+*/
+</code>
+
+<p>
+Comments are useful for documentation, reminders, and hiding code temporarily.
+</p>
+
+</div>
+
+<h2 id="operators">Operators</h2>
+
+<div class="example-box">
+
+<p>
+Operators are symbols used to perform actions on values.
+</p>
+
+<ul>
+<li><b>Mathematical:</b> +  -  *  /  %  ++  --</li>
+<li><b>Assignment:</b> =  +=  -=  *=  /=</li>
+<li><b>Logical:</b> &&  ||  !</li>
+<li><b>Increment / Decrement:</b> ++  --</li>
+</ul>
+
+</div>
+
+
+<div class="example-box">
+
+<h3>Comparison operators</h3>
+
+<table border="1" cellpadding="8">
+<tr>
+   <th>Operator</th>
+   <th>Meaning</th>
+</tr>
+
+<tr><td>==</td><td>equal value</td></tr>
+<tr><td>===</td><td>equal value and equal type</td></tr>
+<tr><td>!=</td><td>not equal</td></tr>
+<tr><td>!==</td><td>not equal value or not equal type</td></tr>
+<tr><td>&gt;</td><td>greater than</td></tr>
+<tr><td>&lt;</td><td>less than</td></tr>
+<tr><td>&gt;=</td><td>greater than or equal to</td></tr>
+<tr><td>&lt;=</td><td>less than or equal to</td></tr>
+<tr><td>?</td><td>ternary operator</td></tr>
+
+</table>
+
+</div>
+
+<h2 id="conditions">Conditional statements</h2>
+
+<div class="example-box">
+
+<p>
+Conditional statements let us run code only when a condition is true.
+</p>
+
+<code>
+let grade = 85;
+
+if (grade >= 90) {
+   console.log("Excellent");
+}
+else if (grade >= 70) {
+   console.log("Good");
+}
+else {
+   console.log("Needs improvement");
+}
+</code>
+
+<p>
+In this example, the message depends on the value of <b>grade</b>.
+</p>
+
+</div>
+
+
+<h2 id="loops">Loops</h2>
+
+<div class="example-box">
+
+<p>
+Loops let us repeat code multiple times.
+</p>
+
+<h3>for loop</h3>
+
+<code>
+for (let i = 0; i &lt; 5; i++) {
+   console.log("Number:", i);
+}
+</code>
+
+<p>
+Runs 5 times, from 0 to 4.
+</p>
+
+<hr>
+
+<h3>while loop</h3>
+
+<code>
+let x = 0;
+
+while (x &lt; 3) {
+   console.log("x is", x);
+   x++;
+}
+</code>
+
+<p>
+Repeats while the condition is true.
+</p>
+
+<hr>
+
+<h3>do-while loop</h3>
+
+<code>
+let y = 5;
+
+do {
+   console.log("y is", y);
+   y++;
+}
+while (y &lt; 5);
+</code>
+
+<p>
+The code runs at least once, even if the condition is false.
+</p>
+
+</div>
+
+
+<h2 id="user-interaction">User Interaction with prompt()</h2>
+
+<p>
+We can get input from the user using the <b>prompt</b> dialog.  
+The prompt returns a string, or <b>null</b> when the user presses Cancel.
+</p>
+
+<pre>
+let name = window.prompt("Please enter your name", "Guest");
+
+if (name === null) {
+    document.write("User pressed Cancel");
+} else {
+    document.write("Hello " + name);
+}
+</pre>
+
+<hr>
+
+<h3>Example: Read two numbers and calculate</h3>
+
+<p>
+In the next example we:
+</p>
+
+<ul>
+    <li>Ask for two integers</li>
+    <li>Stop the program if Cancel is pressed</li>
+    <li>Convert input strings to numbers</li>
+    <li>Avoid division by zero</li>
+</ul>
+
+
+<code>
+let firstNumber = window.prompt("Enter integer", "0");
+if (firstNumber === null) {
+    document.write("Cancel button was pressed");
+} else {
+
+    let secondNumber = window.prompt("Enter integer", "0");
+    if (secondNumber === null) {
+        document.write("Cancel button was pressed");
+    } else {
+
+        let n1 = parseInt(firstNumber);
+        let n2 = parseInt(secondNumber);
+
+        if (n2 === 0) {
+            document.write("Can not divide by zero");
+        } else {
+
+            let multiply = n1 * n2;
+            let division = n1 / n2;
+
+            document.write(n1 + " * " + n2 + " = " + multiply + "");
+            document.write(n1 + " / " + n2 + " = " + division + "");
+        }
+    }
+}
+</code>
+
+<p>
+Important notes:
+</p>
+
+<ul>
+    <li><b>prompt</b> always returns text</li>
+    <li>We use <b>parseInt</b> to convert to an integer</li>
+    <li>Cancel returns <b>null</b></li>
+    <li>We must check for division by zero</li>
+</ul>
+
+
+<h2 id="css-with-js">Using CSS with JavaScript</h2>
+
+<p>
+JavaScript can also change the style of elements on the page.  
+We usually do this by adding or removing CSS classes.
+</p>
+
+<p>Example:</p>
+
+<pre>
+&lt;!-- HTML --&gt;
+&lt;div id="messageBox"&gt;Click a button&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+    .success {
+        background-color: lightgreen;
+        color: darkgreen;
+        padding: 10px;
+        border: 2px solid darkgreen;
+    }
+
+    .error {
+        background-color: lightpink;
+        color: darkred;
+        padding: 10px;
+        border: 2px solid darkred;
+    }
+&lt;/style&gt;
+
+&lt;!-- JavaScript --&gt;
+document.getElementById("messageBox").className = "success";
+</pre>
+
+<p>
+In this example:
+</p>
+
+<ul>
+    <li>The <b>CSS classes</b> define how the element looks.</li>
+    <li>JavaScript selects the element and changes its class.</li>
+    <li>The page style changes automatically.</li>
+</ul>
+
+
+<h2 id="selectors">Selecting elements in JavaScript</h2>
+
+<p>
+JavaScript needs to <b>select</b> an element before it can change it.
+There are several ways to do this, not only by id.
+</p>
+
+<h3>1. Select by id</h3>
+
+<pre>
+document.getElementById("title");
+</pre>
+
+<p>
+Best when the element is unique on the page.
+</p>
+
+<h3>2. Select by class name</h3>
+
+<pre>
+document.getElementsByClassName("item");
+</pre>
+
+<p>
+Returns a list, because many elements can share the same class.
+</p>
+
+<h3>3. Select by tag name</h3>
+
+<pre>
+document.getElementsByTagName("p");
+</pre>
+
+<p>
+Selects all elements with the same tag, for example all &lt;p&gt; tags.
+</p>
+
+<h3>4. Using CSS selectors (modern way)</h3>
+
+<p>
+Works the same as CSS selectors.
+</p>
+
+<pre>
+document.querySelector("#menu");        // first match
+document.querySelectorAll(".item");     // all matches
+</pre>
+
+<h3>5. Select by name (often used in forms)</h3>
+
+<pre>
+document.getElementsByName("username");
+</pre>
+
+<p>
+This is useful when working with form fields.
+</p>
+
+<hr>
+
+<p>
+Summary:
+</p>
+
+<ul>
+  <li><b>getElementById</b> - simple and very fast</li>
+  <li><b>getElementsByClassName / TagName</b> - returns lists</li>
+  <li><b>querySelector / querySelectorAll</b> - flexible, works like CSS</li>
+  <li><b>getElementsByName</b> - mostly for forms</li>
+</ul>
+
+<h2 id="functions-scope">Functions and Variable Scope</h2>
+
+<p>
+A <b>function</b> is a block of code that runs only when it is called.
+It can receive values (parameters) and return a value.
+</p>
+
+<h3>Example function</h3>
+
+<code>
+function add(a1, a2) {
+    a3 = 10;          // global variable (no declaration keyword!)
+    let sum = a1 + a2; // local variable (visible only inside function)
+    return sum * factor;
+}
+
+var factor = 5;        // global variable
+var res = add(3, 4) + a3;
+document.write(res);
+</code>
+
+<hr>
+
+<h3>Local variables</h3>
+<ul>
+  <li>Defined inside a function using <b>let</b>, <b>const</b>, or <b>var</b></li>
+  <li>Can be used only inside that function</li>
+</ul>
+
+<code>
+function test() {
+    let x = 5;
+}
+<!-- x cannot be used here -->
+</code>
+
+<h3>Global variables</h3>
+<ul>
+  <li>Defined outside any function, or created without a declaration keyword</li>
+  <li>Can be used anywhere in the script</li>
+</ul>
+
+<code>
+var y = 10;
+
+function show() {
+    document.write(y);
+}
+</code>
+
+<p>
+⚠️ Creating variables <b>without</b> let/var/const automatically makes them global.  
+This is considered bad practice.
+</p>
+
+<hr>
+
+<h3>Summary</h3>
+
+<ul>
+  <li><b>Local variable</b>: exists only inside a function.</li>
+  <li><b>Global variable</b>: exists everywhere in the program.</li>
+  <li>A variable that receives a value <b>inside</b> a function but is
+      not declared becomes global automatically.</li>
+</ul>
+
+
+<h2 id="button-call-function">Calling a function from a button</h2>
+
+<p>
+A button can call a JavaScript function using the <b>onclick</b> attribute.
+In this example the function adds two numbers.
+</p>
+
+<code>
+&lt;!-- HTML --&gt;
+&lt;input id="num1" type="text" value="5"&gt;
+&lt;input id="num2" type="text" value="3"&gt;
+
+&lt;button onclick="addNumbers()"&gt;Add&lt;/button&gt;
+
+&lt;p id="result"&gt;&lt;/p&gt;
+
+&lt;!-- JavaScript --&gt;
+function addNumbers() {
+
+    // read values from the inputs
+    let a = parseInt(document.getElementById("num1").value);
+    let b = parseInt(document.getElementById("num2").value);
+
+    // calculate
+    let sum = a + b;
+
+    // show result in the page
+    document.getElementById("result").innerHTML =
+        "Result: " + sum;
+}
+</code>
+
+<p>
+The button calls the function, the function does the calculation,
+and then it writes the result into the page.
+</p>
+
+</body>
+</html>
