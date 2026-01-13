@@ -820,7 +820,7 @@ Important notes:
 
 <p>
 JavaScript can also change the style of elements on the page.  
-We usually do this by adding or removing CSS classes.
+The best way to do this is by adding or removing <b>CSS classes</b>.
 </p>
 
 <p>Example:</p>
@@ -846,7 +846,7 @@ We usually do this by adding or removing CSS classes.
     }
 &lt;/style&gt;
 
-&lt;!-- JavaScript --&gt;
+&lt;!-- JavaScript (replace all classes) --&gt;
 document.getElementById("messageBox").className = "success";
 </pre>
 
@@ -855,10 +855,80 @@ In this example:
 </p>
 
 <ul>
-    <li>The <b>CSS classes</b> define how the element looks.</li>
-    <li>JavaScript selects the element and changes its class.</li>
-    <li>The page style changes automatically.</li>
+    <li>The <b>CSS classes</b> describe different visual states.</li>
+    <li>JavaScript finds the element and sets its class to <b>success</b>.</li>
+    <li>Any previous classes on the element are <b>removed</b>.</li>
 </ul>
+
+<hr>
+
+<h3>Adding a class instead of replacing it</h3>
+
+<p>
+Sometimes the element already has classes, and we only want to add a new one.
+In that case we use <b>classList.add()</b>:
+</p>
+
+<pre>
+&lt;!-- JavaScript (add without deleting) --&gt;
+document.getElementById("messageBox").classList.add("success");
+</pre>
+
+<p>
+Now the element keeps its old classes, and <b>success</b> is added on top of them.
+</p>
+
+<ul>
+    <li><code>className = "success"</code> replaces everything.</li>
+    <li><code>classList.add("success")</code> keeps the old classes and adds a new one.</li>
+</ul>
+
+<p>
+This is the most common pattern when working with JavaScript and CSS together.
+</p>
+
+<h3>Removing a class</h3>
+
+<p>
+Sometimes we want to undo a style, for example remove
+<code>success</code> and show <code>error</code> instead.
+We use <b>classList.remove()</b>:
+</p>
+
+<pre>
+&lt;!-- JavaScript (remove a class) --&gt;
+document.getElementById("messageBox").classList.remove("success");
+</pre>
+
+<p>
+If the class exists, it is removed.  
+If it does not exist, nothing bad happens, the code just continues.
+</p>
+
+<ul>
+    <li><code>classList.add("success")</code> → adds the class</li>
+    <li><code>classList.remove("success")</code> → removes the class</li>
+</ul>
+
+<hr>
+
+<h3>Putting it together</h3>
+
+<pre>
+let box = document.getElementById("messageBox");
+
+// show success
+box.classList.add("success");
+
+// later, switch to error
+box.classList.remove("success");
+box.classList.add("error");
+</pre>
+
+<p>
+This pattern is very common when showing messages, alerts, and form validation.
+</p>
+
 
 
 <h2 id="selectors">Selecting elements in JavaScript</h2>
@@ -943,7 +1013,7 @@ It can receive values (parameters) and return a value.
 
 <code>
 function add(a1, a2) {
-    a3 = 10;          // global variable (no declaration keyword!)
+    a3 = 10;          // global variable 
     let sum = a1 + a2; // local variable (visible only inside function)
     return sum * factor;
 }
@@ -1035,6 +1105,631 @@ function addNumbers() {
 The button calls the function, the function does the calculation,
 and then it writes the result into the page.
 </p>
+
+
+<h2 id="strings">Strings</h2>
+
+<p>
+A string represents a collection of characters.  
+Strings can be written using single quotes or double quotes.
+</p>
+
+<pre>
+// Both are valid
+let str1 = "Hello";
+let str2 = 'Hello';
+</pre>
+
+<p>
+We can put quotes inside a string as long as they are different from the outer quotes:
+</p>
+
+<pre>
+let str = "Hello 'Dear John'";
+let str2 = 'Hello "Dear John"';
+</pre>
+
+
+
+<h2 id="escape-characters">Strings and special characters</h2>
+
+<p>
+The backslash <b>\</b> lets us insert special characters inside a string.
+</p>
+
+<p>Example, to insert a single quote:</p>
+
+<pre>
+let x = 'It\'s alright';
+</pre>
+
+<p>Another example, adding a new line:</p>
+
+<pre>
+let x = "My name is Don.\nI live in Haifa.";
+</pre>
+
+<table border="1" cellpadding="8">
+<thead>
+<tr>
+  <th>Code</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>\'</td><td>single quote</td></tr>
+<tr><td>\"</td><td>double quote</td></tr>
+<tr><td>\\</td><td>backslash</td></tr>
+<tr><td>\n</td><td>new line</td></tr>
+<tr><td>\r</td><td>carriage return</td></tr>
+<tr><td>\t</td><td>tab</td></tr>
+<tr><td>\b</td><td>backspace</td></tr>
+<tr><td>\f</td><td>form feed</td></tr>
+</tbody>
+</table>
+
+
+
+<h2 id="string-object">Strings as objects</h2>
+
+<p>
+In JavaScript, a string is also an object, so it has properties and methods.  
+The <b>length</b> property returns the number of characters in a string.
+</p>
+
+<pre>
+let str = "aaaaa";
+let len = str.length;   // 5
+</pre>
+
+
+
+<h2 id="string-methods">String methods</h2>
+
+<p>
+JavaScript provides many built in methods that work on strings.
+</p>
+
+<table border="1" cellpadding="8">
+<thead>
+<tr>
+  <th>Method</th>
+  <th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+  <td>charAt()</td>
+  <td>Returns the character at a specific position</td>
+</tr>
+
+<tr>
+  <td>concat()</td>
+  <td>Joins two or more strings and returns a new one</td>
+</tr>
+
+<tr>
+  <td>indexOf()</td>
+  <td>Returns the first position of a value in a string</td>
+</tr>
+
+<tr>
+  <td>lastIndexOf()</td>
+  <td>Returns the last position of a value in a string</td>
+</tr>
+
+<tr>
+  <td>localeCompare()</td>
+  <td>Compares two strings</td>
+</tr>
+
+<tr>
+  <td>replace()</td>
+  <td>Replaces part of a string with a new value</td>
+</tr>
+
+<tr>
+  <td>substring()</td>
+  <td>Extracts part of a string</td>
+</tr>
+
+<tr>
+  <td>toLowerCase()</td>
+  <td>Converts the string to lowercase</td>
+</tr>
+
+<tr>
+  <td>toUpperCase()</td>
+  <td>Converts the string to uppercase</td>
+</tr>
+
+<tr>
+  <td>trim()</td>
+  <td>Removes spaces at the beginning and end</td>
+</tr>
+
+<tr>
+  <td>search()</td>
+  <td>Searches a string and returns the position of the match</td>
+</tr>
+
+</tbody>
+</table>
+
+
+<h2 id="arrays">Arrays</h2>
+
+<div class="example-box">
+
+<p>
+An <b>array</b> is an object that stores a list of values.
+Each value is called an element.
+</p>
+
+<ul>
+    <li>All elements have the same array name</li>
+    <li>Each element has an index number</li>
+    <li>Indexes start from <b>0</b></li>
+    <li>The array size grows dynamically</li>
+    <li>When an array is passed to a function, it can be changed inside the function</li>
+</ul>
+
+</div>
+
+
+<h2 id="array-create">Creating arrays</h2>
+
+<div class="example-box">
+
+<p>You can create arrays in several ways:</p>
+
+<code>
+let arr = new Array(3); <br>
+let arr = new Array("morning", "day", "night"); <br>
+let arr = ["morning", "day", "night"];
+</code>
+
+<p>
+The last version using square brackets is the most common.
+</p>
+
+</div>
+
+<h2 id="array-length">Array length and indexing</h2>
+
+<div class="example-box">
+
+<code>
+let arr = ["morning", "day", "night"];
+
+arr[3] = "other";      // array grows automatically
+
+let len = arr.length; // length of the array
+</code>
+
+<p>
+Arrays in JavaScript grow automatically when you add new values.
+</p>
+
+</div>
+
+<h2 id="array-methods">Array methods</h2>
+
+<div class="example-box">
+
+<table border="1" cellpadding="8">
+<tr>
+    <th>Method</th>
+    <th>Description</th>
+    <th>Code</th>
+    <th>Result</th>
+</tr>
+
+<tr>
+<td>concat()</td>
+<td>Joins two or more arrays</td>
+<td>
+<code>
+let a = [1,2];<br>
+let b = [3,4];<br>
+let c = a.concat(b);
+</code>
+</td>
+<td>
+c becomes <b>[1,2,3,4]</b>
+</td>
+</tr>
+
+<tr>
+<td>indexOf()</td>
+<td>Finds the position of a value</td>
+<td>
+<code>
+let arr = ["a","b","c"];<br>
+arr.indexOf("b");
+</code>
+</td>
+<td>
+Returns <b>1</b>
+</td>
+</tr>
+
+<tr>
+<td>pop()</td>
+<td>Removes the last element</td>
+<td>
+<code>
+let arr = [1,2,3];<br>
+arr.pop();
+</code>
+</td>
+<td>
+arr becomes <b>[1,2]</b>
+</td>
+</tr>
+
+<tr>
+<td>push()</td>
+<td>Adds an element to the end</td>
+<td>
+<code>
+let arr = [1,2];<br>
+arr.push(3);
+</code>
+</td>
+<td>
+arr becomes <b>[1,2,3]</b>
+</td>
+</tr>
+
+<tr>
+<td>reverse()</td>
+<td>Reverses the array</td>
+<td>
+<code>
+let arr = [1,2,3];<br>
+arr.reverse();
+</code>
+</td>
+<td>
+arr becomes <b>[3,2,1]</b>
+</td>
+</tr>
+
+<tr>
+<td>slice()</td>
+<td>Returns part of the array</td>
+<td>
+<code>
+let arr = [1,2,3,4];<br>
+arr.slice(1,3);
+</code>
+</td>
+<td>
+Returns <b>[2,3]</b>
+</td>
+</tr>
+
+<tr>
+<td>sort()</td>
+<td>Sorts the array</td>
+<td>
+<code>
+let arr = [3,1,2];<br>
+arr.sort();
+</code>
+</td>
+<td>
+arr becomes <b>[1,2,3]</b>
+</td>
+</tr>
+
+<tr>
+<td>toString()</td>
+<td>Converts array to text</td>
+<td>
+<code>
+let arr = [1,2,3];<br>
+arr.toString();
+</code>
+</td>
+<td>
+Returns <b>"1,2,3"</b>
+</td>
+</tr>
+
+<tr>
+<td>unshift()</td>
+<td>Adds element to the beginning</td>
+<td>
+<code>
+let arr = [2,3];<br>
+arr.unshift(1);
+</code>
+</td>
+<td>
+arr becomes <b>[1,2,3]</b>
+</td>
+</tr>
+
+</table>
+
+</div>
+
+<h2 id="array-loop">Filling an array using a loop</h2>
+
+<div class="example-box">
+
+<code>
+let randomNumbers = new Array();
+
+for (let i = 0; i &lt; 10; i++) {
+    randomNumbers[i] = i;
+}
+</code>
+
+<p>
+This creates an array with numbers from 0 to 9.
+</p>
+
+</div>
+
+<h2 id="array-input">Reading user input into an array and do calculation</h2>
+
+<div class="example-box">
+
+<code>
+
+function fetchInput(arr) {
+
+    for (let i = 0; i &lt; arr.length; i++) {
+        arr[i] = parseInt(window.prompt("Enter grade:", "0"));
+    }
+
+}
+
+function calculateAverage(arr) {
+
+    let sum = 0;
+
+    for (let i = 0; i &lt; arr.length; i++) {
+        sum = sum + arr[i];
+    }
+
+    return sum / arr.length;
+}
+
+let size = parseInt(window.prompt("Enter number of grades:", "1"));
+
+let arr = new Array(size);
+
+fetchInput(arr);
+
+let avg = calculateAverage(arr);
+</code>
+
+<p>
+The program asks how many grades there are, creates an array, fills it,
+and calculates the average.
+</p>
+
+</div>
+
+<h2 id="dom">DOM, Document Object Model</h2>
+
+<div class="example-box">
+
+<p>
+When a web page loads, the browser creates a <b>DOM</b>, Document Object Model.  
+The DOM is a tree of objects that represents all the HTML elements in the page.
+</p>
+
+<p>
+Each HTML element becomes a node in the DOM tree, such as:
+</p>
+
+<ul>
+  <li>document</li>
+  <li>html</li>
+  <li>head</li>
+  <li>body</li>
+  <li>elements like p, h1, div, a</li>
+  <li>attributes and text</li>
+</ul>
+
+<p>
+JavaScript uses the DOM to:
+</p>
+
+<ul>
+  <li>Access HTML elements</li>
+  <li>Change their text</li>
+  <li>Change their HTML</li>
+  <li>Change styles</li>
+  <li>Add or remove elements</li>
+</ul>
+
+<hr>
+
+
+<h3>The document object</h3>
+
+<p>
+The <b>document</b> object represents the entire web page.  
+It allows JavaScript to find and change elements in the HTML.
+</p>
+
+<code>
+document.getElementById("content");
+</code>
+
+<p>
+This code finds the element whose id is <b>content</b>.
+</p>
+
+<p>HTML:</p>
+
+<code>
+&lt;section id="content"&gt;Hello&lt;/section&gt;
+</code>
+
+<hr>
+
+<h3>Reading text from an element</h3>
+
+<code>
+document.getElementById("content").textContent;
+</code>
+
+<p>
+This reads the plain text inside the element.
+</p>
+
+<hr>
+
+<h3>Changing text inside an element</h3>
+
+<code>
+document.getElementById("content").innerHTML = "Hello";
+</code>
+
+<p>
+This replaces the content of the element with new text or HTML.
+</p>
+
+<hr>
+
+<h3>Example</h3>
+
+<code>
+&lt;p id="content"&gt;Old text&lt;/p&gt;
+
+&lt;script&gt;
+  document.getElementById("content").innerHTML = "New text";
+&lt;/script&gt;
+</code>
+
+<p>
+The paragraph will now show <b>New text</b>.
+</p>
+
+<hr>
+
+<h3>Selecting elements in the DOM</h3>
+
+<p>
+There are several ways to find elements in the DOM.
+</p>
+
+<h4>By ID</h4>
+
+<code>
+document.getElementById("title");
+</code>
+
+<p>
+Finds one unique element.
+</p>
+
+<h4>By tag name</h4>
+
+<code>
+document.getElementsByTagName("p");
+</code>
+
+<p>
+Finds all &lt;p&gt; elements and returns a list.
+</p>
+
+<h4>By class name</h4>
+
+<code>
+document.getElementsByClassName("intro");
+</code>
+
+<p>
+Finds all elements with class <b>intro</b>.
+</p>
+
+<h4>Using CSS selectors</h4>
+
+<code>
+document.querySelectorAll("p.intro");
+</code>
+
+<p>
+Finds all &lt;p&gt; elements with class <b>intro</b>.
+This works the same as CSS selectors.
+</p>
+
+<hr>
+
+<h3>Example with multiple elements</h3>
+
+<code>
+&lt;p class="intro"&gt;First&lt;/p&gt;
+&lt;p class="intro"&gt;Second&lt;/p&gt;
+
+&lt;script&gt;
+  let items = document.getElementsByClassName("intro");
+  items[0].innerHTML = "Changed";
+&lt;/script&gt;
+</code>
+
+<p>
+This changes the first paragraph with class <b>intro</b>.
+</p>
+
+</div>
+
+<section id="css-dom">
+
+<h2>CSS and DOM</h2>
+
+<p>
+JavaScript can access many elements in the page at once and change their CSS styles.
+This is done through the DOM.
+</p>
+
+<p>
+In this example, we want to color all &lt;p&gt; (paragraph) elements in red.
+</p>
+
+<h3>HTML</h3>
+
+<pre>
+&lt;h1&gt;DOM and CSS example&lt;/h1&gt;
+&lt;p&gt;Use CSS and DOM&lt;/p&gt;
+&lt;p&gt;We would like to paint all paragraph items&lt;/p&gt;
+</pre>
+
+<h3>JavaScript</h3>
+
+<pre>
+let x = document.getElementsByTagName("p");
+let len = x.length;
+
+for (let i = 0; i &lt; x.length; i++) {
+    x[i].style.color = "red";
+}
+</pre>
+
+<h3>What happens here?</h3>
+
+<ul>
+  <li><b>getElementsByTagName("p")</b> finds all paragraph elements.</li>
+  <li>The result is a list (collection) of elements, an HTMLCollection object.</li>
+  <li>The loop goes through all paragraphs.</li>
+  <li>Each paragraph gets its color changed to red.</li>
+</ul>
+
+<p>
+This is how JavaScript controls CSS through the DOM.
+</p>
+
+</section>
+
 
 </body>
 </html>
