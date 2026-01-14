@@ -1730,6 +1730,565 @@ This is how JavaScript controls CSS through the DOM.
 
 </section>
 
+<section id="dom-css">
+
+<h2>Styling Elements with JavaScript and CSS Classes</h2>
+
+<p>
+JavaScript can change how elements look by adding or removing CSS classes.
+The CSS defines the design, and JavaScript controls when it appears.
+</p>
+
+<h3>CSS</h3>
+<pre>
+.bigRed {
+    color: red;
+    font-size: 34px;
+}
+</pre>
+
+<h3>HTML</h3>
+<pre>
+&lt;h1&gt;This is a JavaScript example&lt;/h1&gt;
+&lt;p id="myText"&gt;This is a JavaScript content&lt;/p&gt;
+&lt;button id="click"&gt;Click on Me&lt;/button&gt;
+</pre>
+
+<h3>JavaScript</h3>
+<pre>
+document.getElementById("click").onclick = function() {
+    document.getElementById("myText").innerHTML = "This is my text";
+    document.getElementById("myText").classList.add("bigRed");
+}
+</pre>
+
+<p>
+When the button is clicked:
+</p>
+<ul>
+<li>The text inside the paragraph is changed</li>
+<li>The <b>bigRed</b> class is added, making the text red and large</li>
+</ul>
+
+<hr>
+
+<h2>Adding, Removing and Toggling CSS Classes</h2>
+
+<h3>Add a class</h3>
+<pre>
+element.classList.add("bigRed");
+</pre>
+
+<h3>Remove a class</h3>
+<pre>
+element.classList.remove("bigRed");
+</pre>
+
+<h3>Toggle a class</h3>
+<pre>
+element.classList.toggle("bigRed");
+</pre>
+
+<p>
+Toggle means:
+</p>
+<ul>
+<li>If the class exists, remove it</li>
+<li>If it does not exist, add it</li>
+</ul>
+
+<hr>
+
+<h2>Hiding an Element Using JavaScript</h2>
+
+<h3>CSS</h3>
+<pre>
+#box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 10px;
+}
+</pre>
+
+<h3>HTML</h3>
+<pre>
+&lt;div id="box"&gt;&lt;/div&gt;
+</pre>
+
+<h3>JavaScript</h3>
+<pre>
+document.getElementById("box").onclick = function() {
+    document.getElementById("box").style.display = "none";
+}
+</pre>
+
+<p>
+When the user clicks the red square, it disappears from the page.
+</p>
+<p>
+<b>display: none</b> completely removes the element from the page so it is invisible and takes no space,<br>  
+while <b>visibility: hidden</b> makes the element invisible but it still keeps its space in the layout.
+</p>
+
+
+</section>
+
+<section id="dom-demo">
+
+<h2>Live DOM and CSS Demo</h2>
+
+<style>
+.demoBox {
+    width: 120px;
+    height: 120px;
+    background-color: red;
+    margin: 15px 0;
+    border-radius: 10px;
+}
+
+.bigRed {
+    color: red;
+    font-size: 32px;
+}
+</style>
+
+<p id="demoText">This text will change when you click the button</p>
+
+<button id="styleBtn">Make text red and big</button>
+<button id="removeBtn">Remove style</button>
+<button id="toggleBtn">Toggle style</button>
+
+<div class="demoBox" id="demoBox"></div>
+<p id="demoBoxText">Click the red square to hide it</p>
+
+<h3>JavaScript that runs</h3>
+
+<pre>
+// Add class
+document.getElementById("styleBtn").onclick = function() {
+    document.getElementById("demoText").classList.add("bigRed");
+}
+
+// Remove class
+document.getElementById("removeBtn").onclick = function() {
+    document.getElementById("demoText").classList.remove("bigRed");
+}
+
+// Toggle class
+document.getElementById("toggleBtn").onclick = function() {
+    document.getElementById("demoText").classList.toggle("bigRed");
+}
+
+// Hide element
+document.getElementById("demoBox").onclick = function() {
+    document.getElementById("demoBox").style.display = "none";
+}
+</pre>
+
+<script>
+document.getElementById("styleBtn").onclick = function(){
+    document.getElementById("demoText").classList.add("bigRed");
+}
+
+document.getElementById("removeBtn").onclick = function(){
+    document.getElementById("demoText").classList.remove("bigRed");
+}
+
+document.getElementById("toggleBtn").onclick = function(){
+    document.getElementById("demoText").classList.toggle("bigRed");
+}
+
+document.getElementById("demoBox").onclick = function(){
+    document.getElementById("demoBox").style.display = "none";
+    document.getElementById("demoBoxText").innerText = "The red square is gone"
+
+}
+</script>
+
+</section>
+
+<h2 id="js-form-validation">Form Validation using JavaScript</h2>
+
+<div class="example-box">
+
+<p>
+Form validation is the process of checking user input before it is sent to the server.
+JavaScript allows us to validate data directly in the browser.
+</p>
+
+<p>
+With JavaScript we can:
+</p>
+
+<ul>
+    <li>Check if required fields are empty</li>
+    <li>Validate email addresses</li>
+    <li>Validate passwords</li>
+    <li>Show error messages to the user</li>
+    <li>Stop the form from being submitted</li>
+</ul>
+
+<p>
+JavaScript validation runs when the user submits a form.
+If something is wrong, the form is blocked and the user is asked to fix the input.
+</p>
+
+<p>
+This makes forms:
+</p>
+
+<ul>
+    <li>More user friendly</li>
+    <li>More secure</li>
+    <li>More reliable</li>
+</ul>
+
+<p>
+In the next sections you will see examples of validating:
+</p>
+
+<ul>
+    <li>Emails</li>
+    <li>Required fields</li>
+    <li>Passwords</li>
+</ul>
+
+
+</div>
+
+
+<h2 id="js-form-validation">Form Validation using JavaScript - onsubmit</h2>
+
+<div class="example-box">
+
+<p>
+The <b>onsubmit</b> attribute uses a return value to decide if the form should be sent:
+</p>
+
+<pre>
+&lt;form onsubmit="return validateEmail()"&gt;
+</pre>
+
+<p>
+When the user clicks the Submit button:
+</p>
+
+<ul>
+    <li>If <b>validateEmail()</b> returns <b>true</b>, the form is submitted.</li>
+    <li>If <b>validateEmail()</b> returns <b>false</b>, the form is blocked and stays on the page.</li>
+</ul>
+
+<p>
+This is how JavaScript controls whether the browser is allowed to send the form or not.
+</p>
+
+
+</div>
+
+<h2 id="email-validation">Email Validation</h2>
+
+<div class="example-box">
+
+<p>
+Email validation checks that the user typed something that looks like a real email address.
+</p>
+
+<p>HTML</p>
+<pre>
+&lt;form name="emailForm" onsubmit="return validateEmail()"&gt;
+    Email: &lt;input type="text" name="email"&gt;
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+</pre>
+
+<p>JavaScript</p>
+<pre>
+function validateEmail() {
+    let email = document.forms["emailForm"]["email"].value;
+
+    if (email == "") {
+        alert("Email must be filled out");
+        return false;
+    }
+
+    let atPos = email.indexOf("@");
+    let dotPos = email.lastIndexOf(".");
+
+    if (atPos &lt; 1 || dotPos &lt; atPos + 2 || dotPos + 2 &gt;= email.length) {
+        alert("Please enter a valid email");
+        return false;
+    }
+
+    return true;
+}
+</pre>
+
+<p>
+The email must contain <b>@</b> and a dot in the correct positions.
+</p>
+
+</div>
+
+<h2 id="email-validation">Email Validation</h2>
+
+<div class="example-box">
+
+<p>
+Email validation checks that the user typed something that looks like a real email address.
+</p>
+
+<h3>HTML</h3>
+
+<pre>
+&lt;form name="emailForm" <span style="color:blue"><b>onsubmit="return validateEmail()"</b></span>&gt;
+    Email: &lt;input type="text" name="email"&gt;
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+</pre>
+
+<p>
+The <b>onsubmit</b> attribute runs the function when the user clicks Submit.
+The <b>return</b> decides if the form is sent or blocked.
+</p>
+
+<h3>JavaScript</h3>
+
+<pre>
+function validateEmail() {
+
+    // Read the value that the user typed in the email input
+    let email = document.forms["emailForm"]["email"].value;
+
+    if (email == "") {
+        alert("Email must be filled out");
+        <span style="color:red"><b>return false;</b></span>   // stop the form, do NOT submit
+    }
+
+    let atPos = email.indexOf("@");
+    let dotPos = email.lastIndexOf(".");
+
+    if (atPos &lt; 1 || dotPos &lt; atPos + 2 || dotPos + 2 &gt;= email.length) {
+        alert("Please enter a valid email");
+        <span style="color:red"><b>return false;</b></span>   // invalid email, block submission
+    }
+
+    <span style="color:green"><b>return true;</b></span>    // email is valid, allow form to be submitted
+}
+</pre>
+
+<hr>
+
+<h3>What does this syntax mean?</h3>
+
+<pre>
+document.forms["emailForm"]["email"].value
+</pre>
+
+<p>
+This is a special shortcut for working with forms.
+</p>
+
+<ul>
+    <li><b>document.forms["emailForm"]</b> selects the form whose name is <b>emailForm</b></li>
+    <li><b>["email"]</b> selects the input whose name is <b>email</b> inside that form</li>
+    <li><b>.value</b> reads what the user typed</li>
+</ul>
+
+<p>
+So this line means:
+</p>
+
+<p>
+<i>Get the value typed into the input named "email" inside the form named "emailForm".</i>
+</p>
+
+</div>
+
+<h2 id="form-validation">Form Validation</h2>
+
+<div class="example-box">
+
+<p>
+Form validation makes sure the user filled all required fields before submitting.
+</p>
+
+<p>HTML</p>
+<pre>
+&lt;form name="myForm" onsubmit="return validateForm()"&gt;
+    Name: &lt;input type="text" name="fname"&gt;
+    Age: &lt;input type="text" name="age"&gt;
+    &lt;input type="submit" value="Send"&gt;
+&lt;/form&gt;
+</pre>
+
+<p>JavaScript</p>
+<pre>
+function validateForm() {
+    let name = document.forms["myForm"]["fname"].value;
+    let age = document.forms["myForm"]["age"].value;
+
+    if (name == "") {
+        alert("Name is required");
+        return false;
+    }
+
+    if (age == "") {
+        alert("Age is required");
+        return false;
+    }
+
+    return true;
+}
+</pre>
+
+<p>
+If one of the fields is empty, the form will not be sent.
+</p>
+
+</div>
+
+
+<h2 id="password-validation">Password Validation</h2>
+
+<div class="example-box">
+
+<p>
+Password validation checks that the password is not empty and is strong enough.
+</p>
+
+<p>HTML</p>
+<pre>
+&lt;form onsubmit="return validatePassword()"&gt;
+    Password: &lt;input type="password" id="pwd"&gt;
+    &lt;input type="submit" value="Login"&gt;
+&lt;/form&gt;
+</pre>
+
+<p>JavaScript</p>
+<pre>
+function validatePassword() {
+    let pwd = document.getElementById("pwd").value;
+
+    if (pwd == "") {
+        alert("Password cannot be empty");
+        return false;
+    }
+
+    if (pwd.length &lt; 8) {
+        alert("Password must be at least 8 characters");
+        return false;
+    }
+
+    return true;
+}
+</pre>
+
+<p>
+The password must contain at least 8 characters.
+</p>
+
+</div>
+
+<h2 id="local-storage">Transferring Data Between Pages using Local Storage</h2>
+
+<div class="example-box">
+
+<p>
+Sometimes we want to send data from one page to another, for example a name typed on Page 1 that should appear on Page 2.
+JavaScript provides <b>localStorage</b> to store data inside the browser.
+</p>
+
+<p>
+<b>LocalStorage</b> is a special web storage that keeps data even after the page is refreshed or a new page is opened.
+The data does not expire until it is manually removed.
+</p>
+
+<hr>
+
+<h3>Page 1, Save data</h3>
+
+<p>
+On the first page, the user enters their name and clicks a button.
+The data is saved to localStorage, then the browser navigates to another page.
+</p>
+
+<pre>
+&lt;!-- HTML --&gt;
+&lt;input id="firstName" type="text" placeholder="First name"&gt;
+&lt;input id="secondName" type="text" placeholder="Second name"&gt;
+&lt;button id="but"&gt;Transfer data to Page 2&lt;/button&gt;
+
+&lt;script&gt;
+document.getElementById("but").onclick = function () {
+
+    let firstName = document.getElementById("firstName").value;
+    let secondName = document.getElementById("secondName").value;
+
+    // Save values to localStorage
+    localStorage.setItem("firstName", firstName);
+    localStorage.setItem("secondName", secondName);
+
+    // Move to next page
+    window.location = "page2.html";
+}
+&lt;/script&gt;
+</pre>
+
+<p>
+Here we store the data using:
+</p>
+
+<ul>
+  <li><b>localStorage.setItem("key", value)</b></li>
+  <li>The key is a name for the data, for example "firstName"</li>
+  <li>The value is the actual data typed by the user</li>
+</ul>
+
+<hr>
+
+<h3>Page 2, Read data</h3>
+
+<p>
+On the second page, we read the data from localStorage and display it.
+</p>
+
+<pre>
+&lt;!-- HTML --&gt;
+&lt;h1 id="name"&gt;&lt;/h1&gt;
+
+&lt;script&gt;
+const firstName = localStorage.getItem("firstName");
+const secondName = localStorage.getItem("secondName");
+
+document.getElementById("name").innerHTML =
+    "Hello " + firstName + " " + secondName;
+&lt;/script&gt;
+</pre>
+
+<p>
+We read the stored values using:
+</p>
+
+<ul>
+  <li><b>localStorage.getItem("key")</b></li>
+  <li>The key must match the name used when saving the data</li>
+</ul>
+
+<hr>
+
+<h3>Summary</h3>
+
+<ul>
+  <li><b>localStorage</b> lets us save data inside the browser</li>
+  <li>Data stays even when the page changes</li>
+  <li>Page 1 saves data using <b>setItem</b></li>
+  <li>Page 2 reads data using <b>getItem</b></li>
+  <li>This allows data to be transferred between pages</li>
+</ul>
+
+</div>
+
 
 </body>
 </html>
